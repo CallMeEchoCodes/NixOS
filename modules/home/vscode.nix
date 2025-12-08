@@ -1,0 +1,65 @@
+{
+  pkgs,
+  ...
+}:
+{
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+
+    profiles.default = {
+      extensions = with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide
+        mkhl.direnv
+        astro-build.astro-vscode
+        github.vscode-github-actions
+
+        eamodio.gitlens
+        usernamehw.errorlens
+        christian-kohler.path-intellisense
+        k--kato.intellij-idea-keybindings
+
+        ms-vscode.hexeditor
+      ];
+
+      userSettings = {
+        "editor.minimap.enabled" = false;
+
+        "workbench.productIconTheme" = "fluent-icons";
+        "workbench.tree.indent" = 16;
+
+        "editor.selectionHighlight" = false;
+        "editor.occurrencesHighlight" = "off";
+
+        "editor.cursorSmoothCaretAnimation" = "on";
+        "editor.smoothScrolling" = true;
+
+        "editor.formatOnSave" = true;
+
+        "editor.fontFamily" = "'Cartograph CF', 'Symbols Nerd Font Mono'";
+        "editor.fontSize" = 15;
+        "editor.lineHeight" = 1.5;
+        "editor.fontLigatures" = true;
+
+        "explorer.confirmDelete" = false;
+
+        "nix.serverPath" = "nixd";
+        "nix.enableLanguageServer" = true;
+
+        "nix.serverSettings" = {
+          "nixd" = {
+            "nixos" = {
+              "expr" = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.echoslaptop.options";
+            };
+            "home-manager" = {
+              "expr" =
+                "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.echoslaptop.options.home-manager.users.type.getSubOptions []";
+            };
+          };
+        };
+      };
+    };
+  };
+
+  catppuccin.vscode.profiles.default.enable = true;
+}

@@ -1,0 +1,9 @@
+/* remove tst header */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+    display: none;
+}
+
+/* remove vanilla horizontal tabs */
+#TabsToolbar {
+    display: none !important;
+}
