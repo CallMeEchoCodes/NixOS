@@ -40,7 +40,7 @@
           specialArgs = {
             inherit inputs;
             inherit system;
-	    inherit self;
+            inherit self;
           };
 
           modules = [

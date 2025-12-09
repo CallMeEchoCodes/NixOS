@@ -38,6 +38,8 @@
 
   fonts.fontconfig = {
     enable = true;
+    antialias = true;
+
     defaultFonts = {
       serif = [
         "Times New Roman"

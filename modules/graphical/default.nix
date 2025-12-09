@@ -2,6 +2,7 @@
 {
   imports = [
     ./wayland.nix
+    ./greeter.nix
   ];
 
   services = {
@@ -9,13 +10,15 @@
     gpm.enable = true;
   };
 
+  qt.enable = true;
+
   catppuccin = {
     cache.enable = true;
 
     accent = "pink";
     flavor = "mocha";
 
-    tty.enable = true;
+    enable = true;
   };
 
   console = {

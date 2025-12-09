@@ -15,9 +15,12 @@
     ./fonts.nix
   ];
 
+  services.fwupd.enable = true;
+
   programs.fish = {
     enable = true;
   };
+
   # fish enables this by default and it makes builds unbearably slow
   documentation.man.generateCaches = false;
 
@@ -38,19 +41,20 @@
     gnused
     rsync
     tree
+    ripgrep
 
     zip
     unzip
+    zstd
 
-    nixfmt-rfc-style
+    nixfmt
     nixd
-
-    neovim
-    kitty
 
     home-manager
 
     cacert
+    qtcreator
+    kdePackages.qtdeclarative
   ];
 
   programs.gnupg.agent = {

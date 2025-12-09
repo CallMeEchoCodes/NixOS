@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   programs.firefox = {
     enable = true;
@@ -102,5 +102,13 @@
     };
   };
 
-  catppuccin.firefox.enable = true;
+  xdg.mimeApps.defaultApplications = lib.attrsets.genAttrs [
+    "text/html"
+    "application/pdf"
+    "x-www-browser"
+    "x-scheme-handler/http"
+    "x-scheme-handler/https"
+    "x-scheme-handler/about"
+    "x-scheme-handler/unknown"
+  ] (f: "firefox.desktop");
 }

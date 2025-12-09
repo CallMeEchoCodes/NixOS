@@ -10,6 +10,10 @@
 
     settings = {
       theme.name = "catppuccin-mocha";
+
+      window = {
+        opacity = 1;
+      };
     };
   };
 }

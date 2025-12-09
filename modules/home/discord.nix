@@ -10,6 +10,4 @@
     discord.enable = false;
     vesktop.enable = true;
   };
-
-  catppuccin.vesktop.enable = true;
 }
