@@ -9,6 +9,10 @@
   };
 
   programs = {
+    gh = {
+      enable = true;
+    };
+
     fish = {
       enable = true;
 

@@ -53,8 +53,6 @@
     home-manager
 
     cacert
-    qtcreator
-    kdePackages.qtdeclarative
   ];
 
   programs.gnupg.agent = {

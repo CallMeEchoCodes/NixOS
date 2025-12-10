@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  self,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
@@ -13,7 +18,11 @@
     useUserPackages = true;
     useGlobalPkgs = true;
     backupFileExtension = "homemanager.bak";
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+      inherit pkgs;
+      inherit self;
+    };
 
     users.echo = {
       imports = [

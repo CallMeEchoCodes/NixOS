@@ -16,12 +16,16 @@
     ./gtk.nix
     ./quickshell
   ];
+  services.hyprpolkitagent.enable = true;
 
   qt = {
     enable = true;
-    style = {
-      name = "kvantum";
-    };
+    platformTheme.name = "kvantum";
+    style.name = "kvantum";
+  };
+
+  home.sessionVariables = {
+    QT_QPA_PLATFORM = "wayland;xcb";
   };
 
   catppuccin = {

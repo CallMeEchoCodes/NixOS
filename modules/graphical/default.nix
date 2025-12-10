@@ -26,4 +26,8 @@
     font = "${pkgs.terminus_font}/share/consolefonts/ter-v22n.psf.gz";
     keyMap = "us";
   };
+
+  environment.systemPackages = with pkgs; [
+    pwvucontrol
+  ];
 }
