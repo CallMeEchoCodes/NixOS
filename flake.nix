@@ -33,39 +33,4 @@
       ];
       imports = [ ./flake ];
     };
-
-  # outputs =
-  #   inputs@{
-  #     self,
-  #     nixpkgs,
-  #     flake-parts,
-  #     ...
-  #   }:
-  #   let
-  #     system = "x86_64-linux";
-  #     pkgs = import nixpkgs {
-  #       inherit system;
-  #     };
-  #     specialArgs = {
-  #       inherit inputs;
-  #       inherit system;
-  #       inherit self;
-  #     };
-  #   in
-  #   {
-  #     imports = [
-  #       ./modules/flake
-  #     ];
-
-  #     nixosConfigurations = {
-  #       laptop = nixpkgs.lib.nixosSystem {
-  #         inherit system;
-  #         inherit specialArgs;
-
-  #         modules = [
-  #           ./hosts/laptop
-  #         ];
-  #       };
-  #     };
-  #   };
 }
