@@ -1,0 +1,1 @@
+My Nix flake for my own personal use. Feel free to use this as reference in your own flake. This is not a pre-made distribution, it is made exclusively for my own use and will not work out of the box for you without modification.
