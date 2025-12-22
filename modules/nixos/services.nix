@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 {
   services = {
     upower = {
@@ -11,6 +11,9 @@
       criticalPowerAction = "Hibernate";
     };
 
+    gvfs.enable = true;
+    udisks2.enable = true;
+
     printing.enable = true;
 
     avahi = {
@@ -21,7 +24,14 @@
 
     pipewire = {
       enable = config.capabilities.audio.enable;
+
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+
       pulse.enable = true;
+      jack.enable = true;
 
       wireplumber.extraConfig.bluetoothEnhancements = {
         "monitor.bluez.properties" = {

@@ -12,7 +12,6 @@
     inputs.home-manager.nixosModules.home-manager
     ../../home
     ./boot.nix
-    ./discs.nix
     ./nix.nix
     ./users.nix
     ./graphical

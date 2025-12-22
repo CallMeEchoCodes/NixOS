@@ -1,5 +1,4 @@
 {
-  lib,
   inputs,
   pkgs,
   ...
@@ -41,6 +40,7 @@
         jdk8
         jdk17
         jdk21
+        jdk25
       ];
     })
 

@@ -3,6 +3,7 @@
   options.capabilities = {
     battery.enable = lib.mkEnableOption "Battery";
     audio.enable = lib.mkEnableOption "Audio";
+    wireless.enable = lib.mkEnableOption "Wireless";
     graphics.enable = lib.mkEnableOption "Graphics";
     touchpad.enable = lib.mkEnableOption "Touchpad";
   };

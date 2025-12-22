@@ -1,13 +1,10 @@
-{ ... }:
+{ config, ... }:
 {
-  networking = {
-    networkmanager = {
-      enable = true;
-    };
-  };
+  networking.networkmanager.enable = config.capabilities.wireless.enable;
 
   hardware.bluetooth = {
-    enable = true;
+    enable = config.capabilities.wireless.enable;
+
     powerOnBoot = true;
     settings = {
       General.Experimental = true;
@@ -15,5 +12,5 @@
     };
   };
 
-  services.blueman.enable = true;
+  services.blueman.enable = config.capabilities.wireless.enable;
 }
