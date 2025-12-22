@@ -5,11 +5,13 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/echo.nix
-    ../../modules/core
-    ../../modules/graphical
-    ../../modules/wireless.nix
   ];
+
+  capabilities = {
+    battery.enable = true;
+    audio.enable = true;
+    graphics.enable = true;
+  };
 
   boot.kernelParams = [
     # Force use of the thinkpad_acpi driver for backlight control.
@@ -39,29 +41,12 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    acpi
-    brightnessctl
-    powertop
-  ];
-
-  services = {
-    upower = {
-      enable = true;
-
-      percentageLow = 20;
-      percentageCritical = 5;
-      percentageAction = 3;
-
-      criticalPowerAction = "PowerOff";
-    };
-  };
-
   home-manager.users.echo = {
     wayland.windowManager.hyprland.settings = {
       monitor = [ "eDP-1,1920x1080,0x0,1" ];
     };
   };
 
+  system.stateVersion = "25.11";
   networking.hostName = "echoslaptop";
 }

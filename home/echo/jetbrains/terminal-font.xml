@@ -1,0 +1,11 @@
+<application>
+  <component name="TerminalFontOptions">
+    <option name="VERSION" value="1"/>
+    <option name="FONT_SIZE" value="15"/>
+    <option name="FONT_SIZE_2D" value="14.5"/>
+    <option name="FONT_FAMILY" value="Cartograph CF"/>
+    <option name="LINE_SPACING" value="1.0"/>
+    <option name="USE_LIGATURES" value="true"/>
+    <option name="SECONDARY_FONT_FAMILY" value="Monospaced"/>
+  </component>
+</application>
