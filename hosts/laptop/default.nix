@@ -9,6 +9,7 @@
 
   capabilities = {
     battery.enable = true;
+    touchpad.enable = true;
     audio.enable = true;
     graphics.enable = true;
   };

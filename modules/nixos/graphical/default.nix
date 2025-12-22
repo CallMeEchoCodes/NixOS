@@ -43,6 +43,13 @@
         jdk21
       ];
     })
+
+    nautilus
+    keepassxc
+
+    hunspell
+    hunspellDicts.en_AU
+    hunspellDicts.en_GB-ise
   ];
 
   programs.steam = {

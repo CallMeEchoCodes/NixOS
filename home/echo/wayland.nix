@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, osConfig, ... }:
 {
   catppuccin.cursors = {
     enable = true;
@@ -30,8 +30,8 @@
         follow_mouse = true;
         float_switch_override_focus = true;
 
-        sensitivity = 0.5;
-        accel_profile = "adaptive";
+        sensitivity = lib.mkIf osConfig.capabilities.touchpad.enable 0.5;
+        accel_profile = lib.mkIf osConfig.capabilities.touchpad.enable "adaptive";
 
         # unnatural scroll
         touchpad.natural_scroll = false;

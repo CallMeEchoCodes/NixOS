@@ -9,10 +9,6 @@
   };
 
   programs = {
-    gh = {
-      enable = true;
-    };
-
     fish = {
       enable = true;
 
@@ -49,6 +45,13 @@
       };
     };
 
+    gh = {
+      enable = true;
+      settings = {
+        git_protocol = "ssh";
+      };
+    };
+
     zoxide = {
       enable = true;
       enableFishIntegration = true;
@@ -56,9 +59,7 @@
       options = [ "--cmd cd" ];
     };
 
-    bat = {
-      enable = true;
-    };
+    bat.enable = true; # also enabled in nixos, you cant set bat settings in home manager, but it needs to be enabled for catppuccin to work
 
     starship = {
       enable = true;

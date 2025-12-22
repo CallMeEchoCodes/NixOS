@@ -12,11 +12,20 @@
       ];
       minimizeToTray = true;
       arRPC = true;
-
+      hardwareAcceleration = false;
     };
 
     vencord = {
+      themes = {
+        font = ''
+          :root {
+            --font-code: monospace !important;
+          }
+        '';
+      };
+
       settings = {
+        enabledThemes = [ "font.css" ];
         plugins = (
           lib.mergeAttrsList [
             {
@@ -89,7 +98,7 @@
         );
         themeLinks = [
           "https://catppuccin.github.io/discord/dist/catppuccin-mocha-pink.theme.css"
-          "https://raw.githubusercontent.com/sophuric/discord-themes/refs/heads/main/no-nitro-annoyances.css"
+          "https://codeberg.org/ridge/Discord-Adblock/raw/branch/main/discord-adblock.css"
           "https://raw.githubusercontent.com/Tnixc/discord-css/refs/heads/main/quickCss.css"
         ];
       };

@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 {
   home.packages = with pkgs; [
-    (jetbrains.plugins.addPlugins jetbrains.idea-ultimate [
+    (jetbrains.plugins.addPlugins jetbrains.idea [
       "catppuccin-theme"
       "minecraft-development"
     ])
@@ -11,9 +11,8 @@
     builtins.map
       (x: {
         "JetBrains/${
-          (lib.importJSON (
-            pkgs.jetbrains.idea-ultimate + /${pkgs.jetbrains.idea-ultimate.pname}/product-info.json
-          )).dataDirectoryName
+          (lib.importJSON (pkgs.jetbrains.idea + /${pkgs.jetbrains.idea.pname}/product-info.json))
+          .dataDirectoryName
         }/options/${x}".source =
           ./${x};
       })
