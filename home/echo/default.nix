@@ -1,7 +1,4 @@
 {
-  pkgs,
-  lib,
-  config,
   inputs,
   ...
 }:
@@ -22,6 +19,7 @@
     ./qt.nix
     ./quickshell
     ./jetbrains
+    ./spotify.nix
   ];
 
   services.hyprpolkitagent.enable = true;
