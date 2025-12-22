@@ -1,4 +1,4 @@
-{ lib, inputs, ... }:
+{ lib, ... }:
 let
   customLib = lib.fixedPoints.makeExtensible (final: {
 

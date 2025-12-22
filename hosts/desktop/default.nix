@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{ ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -12,8 +9,29 @@
     graphics.enable = true;
   };
 
+  monitors = {
+    DP-1 = {
+      width = 1920;
+      height = 1080;
+
+      refreshRate = 144.0;
+    };
+
+    HDMI-A-1 = {
+      width = 1920;
+      height = 1080;
+
+      offsetX = -1920;
+    };
+  };
+
   services = {
     fstrim.enable = true;
+
+    # This stops my GPU from repeatedly crashing.
+    udev.extraRules = ''
+      SUBSYSTEM=="drm", KERNEL=="card1", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="high"
+    '';
   };
 
   hardware = {
@@ -23,20 +41,6 @@
   };
 
   boot.initrd.kernelModules = [ "amdgpu" ];
-
-  # This stops my GPU from repeatedly crashing.
-  services.udev.extraRules = ''
-    SUBSYSTEM=="drm", KERNEL=="card1", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="high"
-  '';
-
-  home-manager.users.echo = {
-    wayland.windowManager.hyprland.settings = {
-      monitor = [
-        "DP-1,1920x1080@144,1920x0,1"
-        "HDMI-A-1,preferred,0x0,1"
-      ];
-    };
-  };
 
   system.stateVersion = "25.11";
   networking.hostName = "echosdesktop";

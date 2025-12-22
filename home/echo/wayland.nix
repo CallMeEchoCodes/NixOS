@@ -24,6 +24,12 @@
     settings = {
       "$mod" = "SUPER";
 
+      monitor = lib.attrsets.mapAttrsToList (
+        name: monitor:
+        with monitor;
+        "${name},${toString width}x${toString height}@${toString refreshRate},${toString offsetX}x${toString offsetY},1"
+      ) osConfig.monitors;
+
       input = {
         kb_layout = "us";
 

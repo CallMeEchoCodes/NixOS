@@ -14,6 +14,13 @@
     graphics.enable = true;
   };
 
+  monitors = {
+    eDP-1 = {
+      width = 1920;
+      height = 1080;
+    };
+  };
+
   boot.kernelParams = [
     # Force use of the thinkpad_acpi driver for backlight control.
     # This allows the backlight save/load systemd service to work.
@@ -39,12 +46,6 @@
         # intel-ocl
         intel-vaapi-driver
       ];
-    };
-  };
-
-  home-manager.users.echo = {
-    wayland.windowManager.hyprland.settings = {
-      monitor = [ "eDP-1,1920x1080,0x0,1" ];
     };
   };
 
