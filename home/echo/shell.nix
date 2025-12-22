@@ -23,6 +23,12 @@
 
     git = {
       enable = true;
+
+      signing = {
+        key = "BEBCAB631F88D239";
+        signByDefault = true;
+      };
+
       settings = {
         user = {
           email = "romanbarrettsarpi" + "@" + "pm" + ".me";
@@ -38,11 +44,6 @@
         fetch.prune = true;
         push.autoSetupRemote = true;
         lfs.enable = true;
-
-        signing = {
-          key = "BEBCAB631F88D239";
-          signByDefault = true;
-        };
 
         init.defaultBranch = "main";
       };
