@@ -11,7 +11,7 @@
   xdg.configFile.quickshell = {
     enable = true;
 
-    source = config.lib.file.mkOutOfStoreSymlink ./.;
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/NixOS/home/echo/quickshell";
     target = "quickshell";
   };
 }

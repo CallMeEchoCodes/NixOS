@@ -54,6 +54,7 @@
       rsync
       tree
       ripgrep
+      fzf
 
       zip
       unzip

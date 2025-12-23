@@ -6,6 +6,8 @@
         enable = true;
         configurationLimit = 10;
 
+        memtest86.enable = true;
+
         editor = false;
       };
 

@@ -8,19 +8,24 @@
     package = pkgs.vscodium;
 
     profiles.default = {
-      extensions = with pkgs.vscode-extensions; [
-        jnoortheen.nix-ide
-        mkhl.direnv
-        astro-build.astro-vscode
-        github.vscode-github-actions
+      extensions =
+        (with pkgs.vscode-extensions; [
+          jnoortheen.nix-ide
+          mkhl.direnv
+          astro-build.astro-vscode
+          github.vscode-github-actions
 
-        eamodio.gitlens
-        usernamehw.errorlens
-        christian-kohler.path-intellisense
-        k--kato.intellij-idea-keybindings
+          eamodio.gitlens
+          usernamehw.errorlens
+          christian-kohler.path-intellisense
+          k--kato.intellij-idea-keybindings
 
-        ms-vscode.hexeditor
-      ];
+          ms-vscode.hexeditor
+        ])
+        ++ (with pkgs.open-vsx; [
+          theqtcompany.qt-qml
+          theqtcompany.qt-core
+        ]);
 
       userSettings = {
         "editor.minimap.enabled" = false;
@@ -47,6 +52,7 @@
         "nix.enableLanguageServer" = true;
 
         "qt-qml.qmlls.customExePath" = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
+        "qt-qml.qmlls.useQmlImportPathEnvVar" = true;
 
         "nix.serverSettings" = {
           "nixd" = {
