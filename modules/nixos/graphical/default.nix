@@ -50,6 +50,9 @@
     hunspell
     hunspellDicts.en_AU
     hunspellDicts.en_GB-ise
+
+    mpv
+    audacity
   ];
 
   programs.steam = {

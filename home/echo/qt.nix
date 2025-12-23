@@ -2,21 +2,22 @@
 {
   qt = {
     enable = true;
-    style.name = "kvantum";
+
+    style.package = with pkgs; [
+      darkly
+      darkly-qt5
+
+      libsForQt5.qt5ct
+      kdePackages.qt6ct
+    ];
+
     platformTheme = {
-      package = with pkgs; [
-        darkly
-        darkly-qt5
-
-        libsForQt5.qt5ct
-        kdePackages.qt6ct
-      ];
+      name = "qtct";
     };
-
-    platformTheme.name = "qtct";
   };
 
-  catppuccin.kvantum.enable = true;
+  catppuccin.kvantum.enable = false;
+
   home = {
     sessionVariables = {
       QT_QPA_PLATFORM = "wayland;xcb";

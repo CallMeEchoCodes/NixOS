@@ -1,5 +1,12 @@
-{ lib, pkgs, ... }:
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
+  catppuccin.firefox.enable = false; # i have my own catppucccin firefox color theme
+
   programs.firefox = {
     enable = true;
 
@@ -18,13 +25,51 @@
         "browser.useDownloadDir" = false; # ask where to save downloads
         "browser.tabs.warnOnClose" = false;
 
+        # disable the password manager
+        "signon.rememberSignons" = false;
+
         # use system fonts
         "font.default.x-western" = "sans-serif";
         "font.name.monospace.x-western" = "monospace";
         "font.name.sans-serif.x-western" = "sans-serif";
         "font.name.serif.x-western" = "serif";
 
+        # disable ai
+        "browser.ml.enable" = false;
+        "browser.ml.chat.enabled" = false; # very consistent naming thank you mozilla
+        "browser.ml.chat.menu" = false;
+        "browser.tabs.groups.smart.enabled" = false;
+        "browser.ml.linkPreview.enabled" = false;
+
+        # disable fullscreen notice
+        "full-screen-api.transition-duration.enter" = "0 0";
+        "full-screen-api.transition-duration.leave" = "0 0";
+        "full-screen-api.warning.timeout" = 0;
+
+        # super smooth scrolling (credit: betterfox/smoothfox)
+        "apz.overscroll.enabled" = true;
         "general.smoothScroll" = true;
+        "general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS" = 12;
+        "general.smoothScroll.msdPhysics.enabled" = true;
+        "general.smoothScroll.msdPhysics.motionBeginSpringConstant" = 600;
+        "general.smoothScroll.msdPhysics.regularSpringConstant" = 650;
+        "general.smoothScroll.msdPhysics.slowdownMinDeltaMS" = 25;
+        "general.smoothScroll.msdPhysics.slowdownMinDeltaRatio" = "2";
+        "general.smoothScroll.msdPhysics.slowdownSpringConstant" = 250;
+        "general.smoothScroll.currentVelocityWeighting" = "1";
+        "general.smoothScroll.stopDecelerationWeighting" = "1";
+        "mousewheel.default.delta_multiplier_y" = 100;
+
+        # hardware accel
+        "gfx.webrender.all" = true;
+        "media.ffmpeg.vaapi.enabled" = true;
+
+        # webgpu
+        "dom.webgpu.enabled" = true;
+        "dom.webgpu.indirect-draw.enabled" = true;
+        "dom.webgpu.workers.enabled" = true;
+
+        "devtools.theme" = "dark";
 
         "intl.accept_languages" = "en-au,en-us,en";
         "intl.regional_prefs.use_os_locales" = true;
@@ -55,6 +100,70 @@
           tree-style-tab
           firefox-color # required for catppuccin
         ];
+
+        settings = {
+          "FirefoxColor@mozilla.com" = {
+            force = true;
+            settings = {
+              firstRunDone = true;
+              theme = {
+                colors = with (lib.importJSON "${config.catppuccin.sources.palette}/palette.json").mocha.colors; {
+                  toolbar = mantle.rgb;
+                  toolbar_text = text.rgb;
+                  frame = mantle.rgb;
+                  tab_background_text = text.rgb;
+                  toolbar_field = base.rgb;
+                  toolbar_field_text = text.rgb;
+                  tab_line = mantle.rgb;
+                  popup = base.rgb;
+                  popup_text = text.rgb;
+                  button_background_active = overlay0.rgb;
+                  frame_inactive = crust.rgb;
+                  icons_attention = pink.rgb;
+                  icons = pink.rgb;
+                  ntp_background = crust.rgb;
+                  ntp_text = text.rgb;
+                  popup_border = pink.rgb;
+                  popup_highlight_text = text.rgb;
+                  popup_highlight = overlay0.rgb;
+                  sidebar_border = pink.rgb;
+                  sidebar_highlight_text = crust.rgb;
+                  sidebar_highlight = pink.rgb;
+                  sidebar_text = text.rgb;
+                  sidebar = base.rgb;
+                  tab_background_separator = pink.rgb;
+                  tab_loading = pink.rgb;
+                  tab_selected = base.rgb;
+                  tab_text = text.rgb;
+                  toolbar_bottom_separator = base.rgb;
+                  toolbar_field_border_focus = pink.rgb;
+                  toolbar_field_border = base.rgb;
+                  toolbar_field_focus = base.rgb;
+                  toolbar_field_highlight_text = base.rgb;
+                  toolbar_field_highlight = pink.rgb;
+                  toolbar_field_separator = pink.rgb;
+                  toolbar_vertical_separator = pink.rgb;
+                };
+                # well that was painful to write
+
+                images = {
+                  additional_backgrounds = [
+                    "./bg-000.svg"
+                  ];
+                  custom_backgrounds = [ ];
+                };
+                title = "Catppuccin mocha pink";
+              };
+            };
+          };
+          "treestyletab@piro.sakura.ne.jp" = {
+            settings = {
+              force = true;
+              # todo: store in plain text and decode at build time (this is just some css)
+              chunkedUserStyleRules0 = "dGFiLWl0ZW0gewoJYm94LXNoYWRvdzogMCAwIHZhcigtLXRhYi1kcm9wc2hhZG93LWJsdXIpIHJnYmEoMCwgMCwgMCwgMC4wKSAhaW1wb3J0YW50Owp9CgojdGFiYmFyLWNvbnRhaW5lciAjdGFiYmFyIHsKICAgIG1hcmdpbi1sZWZ0OiA2cHggIWltcG9ydGFudDsKfQ==";
+            };
+          };
+        };
       };
     };
 
@@ -66,6 +175,8 @@
       DisableFirefoxAccounts = true;
       DisableAccounts = true;
       DisableFirefoxScreenshots = true;
+      DisableFeedbackCommands = true;
+
       FirefoxHome = {
         Search = true;
         TopSites = false;

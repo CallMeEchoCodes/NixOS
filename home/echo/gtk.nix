@@ -2,6 +2,15 @@
 {
   home.sessionVariables.GTK_USE_PORTAL = "1";
 
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
+    };
+  };
+
   gtk = {
     enable = true;
 
