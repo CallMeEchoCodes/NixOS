@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  self,
   ...
 }:
 {
@@ -25,7 +26,7 @@
         "browser.useDownloadDir" = false; # ask where to save downloads
         "browser.tabs.warnOnClose" = false;
 
-        # disable the password manager
+        # disable the password
         "signon.rememberSignons" = false;
 
         # use system fonts
@@ -160,7 +161,15 @@
             settings = {
               force = true;
               # todo: store in plain text and decode at build time (this is just some css)
-              chunkedUserStyleRules0 = "dGFiLWl0ZW0gewoJYm94LXNoYWRvdzogMCAwIHZhcigtLXRhYi1kcm9wc2hhZG93LWJsdXIpIHJnYmEoMCwgMCwgMCwgMC4wKSAhaW1wb3J0YW50Owp9CgojdGFiYmFyLWNvbnRhaW5lciAjdGFiYmFyIHsKICAgIG1hcmdpbi1sZWZ0OiA2cHggIWltcG9ydGFudDsKfQ==";
+              chunkedUserStyleRules0 = self.lib.toBase64 ''
+                tab-item {
+                	box-shadow: 0 0 var(--tab-dropshadow-blur) rgba(0, 0, 0, 0.0) !important;
+                }
+
+                #tabbar-container #tabbar {
+                    margin-left: 6px !important;
+                }
+              '';
             };
           };
         };

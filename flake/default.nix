@@ -2,6 +2,7 @@
 {
   imports = [
     ../hosts
+    ./lib.nix
   ];
 
   perSystem =
