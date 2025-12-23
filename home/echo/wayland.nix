@@ -36,8 +36,8 @@
         follow_mouse = true;
         float_switch_override_focus = true;
 
-        sensitivity = lib.mkIf osConfig.capabilities.touchpad.enable 0.5;
-        accel_profile = lib.mkIf osConfig.capabilities.touchpad.enable "adaptive";
+        sensitivity = if osConfig.capabilities.touchpad.enable then 0.5 else 1.0;
+        accel_profile = if osConfig.capabilities.touchpad.enable then "adaptive" else "flat";
 
         # unnatural scroll
         touchpad.natural_scroll = false;
@@ -48,12 +48,22 @@
         preserve_split = true;
       };
 
+      xwayland = {
+        use_nearest_neighbor = true;
+        force_zero_scaling = true;
+      };
+
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
 
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = true;
+
+        animate_mouse_windowdragging = true;
+        animate_manual_resizes = true;
+
+        enable_anr_dialog = false;
       };
 
       ecosystem.no_donation_nag = true;
@@ -117,9 +127,14 @@
         };
       };
 
+      windowrule = [
+        "noblur, title:windowkill"
+        "float,title:UNDERTALE"
+        "noinitialfocus,class:^jetbrains-.*$,floating:1,title:^$|^\\s$|^win\\d+$"
+      ];
+
       layerrule = [
-        "ignorealpha 0, vicinae"
-        "noanim, vicinae"
+        "ignorezero, vicinae"
       ];
 
       animations = {

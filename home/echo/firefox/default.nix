@@ -100,6 +100,7 @@
           ublock-origin
           tree-style-tab
           firefox-color # required for catppuccin
+          stylus
         ];
 
         settings = {

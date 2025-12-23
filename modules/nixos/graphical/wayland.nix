@@ -1,21 +1,28 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    wl-clipboard
+  environment = {
+    systemPackages = with pkgs; [
+      wl-clipboard
 
-    (pkgs.writeShellApplication {
-      name = "screenshooter";
-      runtimeInputs = [
-        slurp
-        grim
-        hyprpicker # used to freeze the screen, very hacky
-        wl-clipboard
-        xdg-user-dirs
-        coreutils
-      ];
-      text = builtins.readFile ./screenshooter.sh;
-    })
-  ];
+      (pkgs.writeShellApplication {
+        name = "screenshooter";
+        runtimeInputs = [
+          slurp
+          grim
+          hyprpicker # used to freeze the screen, very hacky
+          wl-clipboard
+          xdg-user-dirs
+          coreutils
+        ];
+        text = builtins.readFile ./screenshooter.sh;
+      })
+    ];
+
+    sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      _JAVA_AWT_WM_NONREPARENTING = "1";
+    };
+  };
 
   programs.hyprland = {
     enable = true;

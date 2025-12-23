@@ -33,6 +33,8 @@
 
   xdg.userDirs.enable = true;
 
+  services.kdeconnect.enable = true;
+
   home = {
     stateVersion = "25.11";
   };
