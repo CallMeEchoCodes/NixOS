@@ -12,8 +12,8 @@ Rectangle {
 
     required property PanelWindow window
 
-    implicitWidth: tray.width + 15
-    implicitHeight: tray.height + 15
+    implicitWidth: parent.width
+    implicitHeight: tray.height + 20
 
     color: Colors.mantle
     radius: 180
@@ -37,7 +37,17 @@ Rectangle {
 
                 IconImage {
                     anchors.fill: parent
-                    source: trayItem.modelData.icon
+                    source: {
+                        let icon = trayItem.modelData.icon;
+
+                        if (icon.includes("?path=")) {
+                            const [name, path] = icon.split("?path=");
+                            icon = Qt.resolvedUrl(`${path}/${name.slice(name.lastIndexOf("/") + 1)}`);
+                        }
+
+                        return icon;
+                    }
+
                     asynchronous: true
                 }
 

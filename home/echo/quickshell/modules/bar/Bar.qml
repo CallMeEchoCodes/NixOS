@@ -1,8 +1,9 @@
 import Quickshell
 import Quickshell.Wayland
 import QtQuick
-import QtQuick.Layouts
 import qs.components
+import qs
+import qs.services
 
 Scope {
     id: root
@@ -34,13 +35,14 @@ Scope {
 
             implicitWidth: 40
 
-            ColumnLayout {
+            Item {
                 anchors.fill: parent
 
                 Item {
-                    Layout.alignment: Qt.AlignCenter
+                    anchors.top: parent.top
 
-                    implicitHeight: parent.height / 3
+                    width: parent.width
+                    height: parent.height / 3
 
                     Stats {
                         anchors.top: parent.top
@@ -49,8 +51,8 @@ Scope {
                 }
 
                 Item {
-                    Layout.alignment: Qt.AlignCenter
-                    implicitHeight: parent.height / 3
+                    anchors.centerIn: parent
+                    height: parent.height / 3
 
                     Workspaces {
                         screen: window.screen
@@ -59,15 +61,37 @@ Scope {
                 }
 
                 Item {
-                    Layout.alignment: Qt.AlignCenter
-                    implicitHeight: parent.height / 3
+                    anchors.bottom: parent.bottom
+                    width: parent.width
+                    height: parent.height / 3
+
+                    Rectangle {
+                        width: parent.width
+                        height: col.height + (10 * 2)
+                        color: Colors.mantle
+                        anchors.bottom: tray.top
+                        anchors.bottomMargin: 10
+                        radius: 180
+
+                        Column {
+                            id: col
+                            anchors.centerIn: parent
+
+                            DefaultedText {
+                                font.family: "monospace"
+                                font.italic: true
+                                textFormat: Text.StyledText
+                                text: DateTime.format("<b>hh</b><br\>mm")
+                            }
+                        }
+                    }
 
                     Tray {
-                        anchors.bottomMargin: 12
+                        id: tray
                         anchors.bottom: parent.bottom
-                        anchors.horizontalCenter: parent.horizontalCenter
-
                         window: window
+
+                        anchors.horizontalCenter: parent.horizontalCenter
                     }
                 }
             }

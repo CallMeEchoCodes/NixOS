@@ -1,6 +1,6 @@
 import QtQuick
 
-Text {
+DefaultedText {
     id: root
 
     property real fill: 0
@@ -18,7 +18,6 @@ Text {
     }
 
     font.hintingPreference: Font.PreferFullHinting
-    renderType: Text.NativeRendering
 
     text: icon
 }
