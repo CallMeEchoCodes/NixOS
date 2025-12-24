@@ -25,6 +25,8 @@
         ++ (with pkgs.open-vsx; [
           theqtcompany.qt-qml
           theqtcompany.qt-core
+
+          slevesque.shader
         ]);
 
       userSettings = {
@@ -54,17 +56,18 @@
         "qt-qml.qmlls.customExePath" = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
         "qt-qml.qmlls.useQmlImportPathEnvVar" = true;
 
-        "nix.serverSettings" = {
-          "nixd" = {
-            "nixos" = {
-              "expr" = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.echoslaptop.options";
-            };
-            "home-manager" = {
-              "expr" =
-                "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.echoslaptop.options.home-manager.users.type.getSubOptions []";
-            };
-          };
-        };
+        # TODO: figure this out
+        # "nix.serverSettings" = {
+        #   "nixd" = {
+        #     "nixos" = {
+        #       "expr" = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.echoslaptop.options";
+        #     };
+        #     "home-manager" = {
+        #       "expr" =
+        #         "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.echoslaptop.options.home-manager.users.type.getSubOptions []";
+        #     };
+        #   };
+        # };
       };
     };
   };

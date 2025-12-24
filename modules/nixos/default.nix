@@ -61,6 +61,8 @@
       zstd
 
       cacert
+
+      zenity
     ]
     ++ (lib.optionals config.capabilities.battery.enable (
       with pkgs;

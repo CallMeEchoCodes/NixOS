@@ -88,9 +88,8 @@ Scope {
 
                     Tray {
                         id: tray
-                        anchors.bottom: parent.bottom
-                        window: window
 
+                        anchors.bottom: parent.bottom
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                 }

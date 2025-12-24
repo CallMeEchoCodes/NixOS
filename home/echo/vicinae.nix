@@ -6,7 +6,11 @@
 
   services.vicinae = {
     enable = true;
-    autoStart = true;
+
+    systemd = {
+      enable = true;
+      autoStart = true;
+    };
 
     settings = {
       theme.name = "catppuccin-mocha";

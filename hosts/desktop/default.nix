@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -37,6 +37,7 @@
   hardware = {
     graphics = {
       enable = true;
+      extraPackages = with pkgs; [ mesa ];
     };
   };
 

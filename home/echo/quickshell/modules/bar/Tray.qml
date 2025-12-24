@@ -10,10 +10,8 @@ import qs.components
 Rectangle {
     id: root
 
-    required property PanelWindow window
-
     implicitWidth: parent.width
-    implicitHeight: tray.height + 20
+    implicitHeight: Math.max(tray.height, 20) + 20
 
     color: Colors.mantle
     radius: 180

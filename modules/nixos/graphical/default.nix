@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -15,6 +16,12 @@
   services = {
     libinput.enable = true;
     gpm.enable = true;
+  };
+
+  environment.sessionVariables = {
+    LD_LIBRARY_PATH = [
+      "${pkgs.libglvnd}/lib"
+    ];
   };
 
   qt.enable = true;
@@ -53,7 +60,16 @@
 
     mpv
     audacity
+    renderdoc
   ];
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      renderdoc
+      libglvnd
+    ];
+  };
 
   programs.kdeconnect.enable = true;
 
