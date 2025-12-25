@@ -19,9 +19,25 @@
   };
 
   environment.sessionVariables = {
-    LD_LIBRARY_PATH = [
-      "${pkgs.libglvnd}/lib"
-    ];
+    LD_LIBRARY_PATH = map (pkg: "${pkg}/lib") (
+      with pkgs;
+      [
+        # required for lwjgl games
+        glfw
+        libpulseaudio
+        libGL
+        openal
+        stdenv.cc.cc
+
+        udev # oshi
+
+        xorg.libX11
+        xorg.libXext
+        xorg.libXcursor
+        xorg.libXrandr
+        xorg.libXxf86vm
+      ]
+    );
   };
 
   qt.enable = true;
@@ -61,6 +77,7 @@
     mpv
     audacity
     renderdoc
+    blockbench
   ];
 
   programs.nix-ld = {
@@ -68,6 +85,7 @@
     libraries = with pkgs; [
       renderdoc
       libglvnd
+      glfw
     ];
   };
 
