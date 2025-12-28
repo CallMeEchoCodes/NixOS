@@ -1,13 +1,25 @@
-{ inputs, ... }:
+{ pkgs, inputs, ... }:
 {
   nix = {
+    # fork of cppnix, many cool new features (also faster)
+    package = pkgs.lixPackageSets.stable.lix;
+
+    gc.automatic = true;
     channel.enable = false;
+
     settings = {
       warn-dirty = false;
 
       auto-optimise-store = true;
 
       max-jobs = "auto";
+
+      # ALWAYS ask before accepting a configuration
+      accept-flake-config = false;
+
+      # direnv stuff
+      keep-derivations = true;
+      keep-outputs = true;
 
       experimental-features = [
         "nix-command"

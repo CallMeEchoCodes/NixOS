@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ inputs, ... }:
 {
-  programs.fish.enable = true;
-
-  # fish enables this by default and it makes builds unbearably slow
-  documentation.man.generateCaches = false;
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+    ../../home
+  ];
 
   users.users.echo = {
     isNormalUser = true;
@@ -11,7 +11,7 @@
       "wheel"
       "nix"
     ];
-    shell = pkgs.fish;
+
     home = "/home/echo";
     uid = 1000;
   };

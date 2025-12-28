@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   lib,
+  config,
   ...
 }:
 {
@@ -56,28 +57,6 @@
     font = "${pkgs.terminus_font}/share/consolefonts/ter-v22n.psf.gz";
     keyMap = "us";
   };
-
-  environment.systemPackages = with pkgs; [
-    (prismlauncher.override {
-      jdks = [
-        jdk8
-        jdk17
-        jdk21
-        jdk25
-      ];
-    })
-
-    keepassxc
-
-    hunspell
-    hunspellDicts.en_AU
-    hunspellDicts.en_GB-ise
-
-    mpv
-    audacity
-    renderdoc
-    blockbench
-  ];
 
   programs.nix-ld = {
     enable = true;
