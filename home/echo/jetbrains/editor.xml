@@ -31,5 +31,6 @@
         <pattern pattern="\btodo\b.*" />
         <pattern pattern="\bfixme\b.*" />
         <pattern pattern="\btemp\b.*" />
+        <pattern pattern="\bstub\b.*" />
     </component>
 </application>

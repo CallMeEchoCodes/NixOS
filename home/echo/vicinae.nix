@@ -13,10 +13,19 @@
     };
 
     settings = {
-      theme.name = "catppuccin-mocha";
+      theme = {
+        light = {
+          name = "catppuccin-latte";
+          icon_theme = "default";
+        };
+        dark = {
+          name = "catppuccin-mocha";
+          icon_theme = "default";
+        };
+      };
 
-      window = {
-        opacity = 1;
+      launcher_window = {
+        opacity = 1.0;
       };
     };
   };

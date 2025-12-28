@@ -1,4 +1,10 @@
-{ lib, osConfig, ... }:
+{
+  lib,
+  osConfig,
+  self',
+  pkgs,
+  ...
+}:
 {
   catppuccin.cursors = {
     enable = true;
@@ -13,6 +19,18 @@
 
     x11.enable = false;
   };
+
+  home.packages = with pkgs; [
+    wl-clipboard
+    self'.packages.screenshooter
+    aseprite
+    nautilus
+  ];
+
+  xdg.mimeApps.defaultApplications = lib.attrsets.genAttrs [
+    "inode/directory"
+    "application/x-gnome-saved-search"
+  ] (f: "org.gnome.Nautilus.desktop");
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -36,7 +54,7 @@
         follow_mouse = true;
         float_switch_override_focus = true;
 
-        sensitivity = if osConfig.capabilities.touchpad.enable then 0.5 else 1.0;
+        sensitivity = if osConfig.capabilities.touchpad.enable then 0.5 else 2.0;
         accel_profile = if osConfig.capabilities.touchpad.enable then "adaptive" else "flat";
 
         # unnatural scroll
@@ -78,6 +96,8 @@
         "$mod, Q, killactive"
         "$mod, F, fullscreen"
         "$mod, V, togglefloating"
+
+        "$mod SHIFT, S, exec, ${self'.packages.screenshooter}/bin/screenshooter"
 
         "$mod SHIFT, M, exit"
 

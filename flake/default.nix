@@ -1,4 +1,7 @@
-{ inputs, ... }:
+{
+  inputs,
+  ...
+}:
 {
   imports = [
     ../hosts
@@ -11,10 +14,16 @@
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
 
+        overlays = [
+          inputs.nix-vscode-extensions.overlays.default
+        ];
+
         config = {
           allowUnfree = true;
         };
       };
+
+      imports = [ ../packages ];
 
       devShells.default = pkgs.mkShellNoCC {
         buildInputs = with pkgs; [

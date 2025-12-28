@@ -1,5 +1,6 @@
 {
   self,
+  self',
   inputs,
   ...
 }:
@@ -11,6 +12,7 @@
     extraSpecialArgs = {
       inherit inputs;
       inherit self;
+      inherit self';
     };
 
     users.echo = ./echo;

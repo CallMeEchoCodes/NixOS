@@ -67,7 +67,6 @@
       ];
     })
 
-    nautilus
     keepassxc
 
     hunspell
