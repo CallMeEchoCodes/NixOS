@@ -32,6 +32,9 @@
     "application/x-gnome-saved-search"
   ] (f: "org.gnome.Nautilus.desktop");
 
+  # TODO: quickshell notis
+  services.dunst.enable = true;
+
   wayland.windowManager.hyprland = {
     enable = true;
 

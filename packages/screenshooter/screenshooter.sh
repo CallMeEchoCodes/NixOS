@@ -1,4 +1,4 @@
-SCREENSHOT_DIRECTORY="$XDG_PICTURES_DIR/Screenshots"
+SCREENSHOT_DIRECTORY="$(xdg-user-dir PICTURES)/Screenshots"
 FILE_NAME="$(date +%F-%H:%M:%S).png"
 
 mkdir -p "$SCREENSHOT_DIRECTORY"
