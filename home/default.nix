@@ -2,6 +2,7 @@
   self,
   self',
   inputs,
+  system,
   ...
 }:
 {
@@ -13,6 +14,7 @@
       inherit inputs;
       inherit self;
       inherit self';
+      inherit system;
     };
 
     users.echo = ./echo;
