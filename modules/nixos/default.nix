@@ -15,6 +15,4 @@
     ./locale.nix
     ./shell.nix
   ];
-
-  services.fwupd.enable = true;
 }
