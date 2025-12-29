@@ -46,7 +46,7 @@
         name: monitor:
         with monitor;
         "${name},${toString width}x${toString height}@${toString refreshRate},${toString offsetX}x${toString offsetY},1"
-      ) osConfig.monitors;
+      ) osConfig.reverb.monitors;
 
       input = {
         kb_layout = "us";
@@ -54,8 +54,8 @@
         follow_mouse = true;
         float_switch_override_focus = true;
 
-        sensitivity = if osConfig.capabilities.touchpad.enable then 0.5 else 2.0;
-        accel_profile = if osConfig.capabilities.touchpad.enable then "adaptive" else "flat";
+        sensitivity = if osConfig.reverb.hardware.touchpad then 0.5 else 2.0;
+        accel_profile = if osConfig.reverb.hardware.touchpad then "adaptive" else "flat";
 
         # unnatural scroll
         touchpad.natural_scroll = false;

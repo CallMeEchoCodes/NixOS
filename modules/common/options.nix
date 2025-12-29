@@ -1,14 +1,6 @@
 { lib, ... }:
 {
-  options.capabilities = {
-    battery.enable = lib.mkEnableOption "Battery";
-    audio.enable = lib.mkEnableOption "Audio";
-    wireless.enable = lib.mkEnableOption "Wireless";
-    graphics.enable = lib.mkEnableOption "Graphics";
-    touchpad.enable = lib.mkEnableOption "Touchpad";
-  };
-
-  options.monitors = lib.mkOption {
+  options.reverb.monitors = lib.mkOption {
     description = "The set of monitors expected to be plugged in.";
 
     type = lib.types.attrsOf (

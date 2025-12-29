@@ -1,19 +1,16 @@
 {
-  config,
-  lib,
   inputs,
-  pkgs,
   ...
 }:
 {
   imports = [
     ../common
+    ./hardware
     inputs.nur.modules.nixos.default
     ./boot.nix
     ./nix.nix
     ./users.nix
     ./graphical
-    ./wireless.nix
     ./services.nix
     ./locale.nix
     ./shell.nix

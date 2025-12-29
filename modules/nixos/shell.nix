@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
@@ -6,36 +6,27 @@
   # fish enables this by default and it makes switch unbearably slow
   documentation.man.generateCaches = false;
 
-  environment.systemPackages =
-    with pkgs;
-    [
-      wget
-      curl
-      trash-cli
+  environment.systemPackages = with pkgs; [
+    wget
+    curl
+    trash-cli
 
-      # waow nix is super minimal by default
-      killall
-      file
-      coreutils
-      gnused
-      rsync
-      tree
-      ripgrep
-      fzf
+    # waow nix is super minimal by default
+    killall
+    file
+    coreutils
+    gnused
+    rsync
+    tree
+    ripgrep
+    fzf
 
-      zip
-      unzip
-      zstd
+    zip
+    unzip
+    zstd
 
-      cacert
-    ]
-    ++ (lib.optionals config.capabilities.battery.enable (
-      with pkgs;
-      [
-        acpi
-        brightnessctl
-      ]
-    ));
+    cacert
+  ];
 
   programs = {
     git.enable = true;

@@ -1,24 +1,22 @@
-{
-  pkgs,
-  ...
-}:
+{ ... }:
 {
   imports = [
     ./hardware-configuration.nix
   ];
 
-  capabilities = {
-    battery.enable = true;
-    touchpad.enable = true;
-    wireless.enable = true;
-    audio.enable = true;
-    graphics.enable = true;
-  };
+  reverb = {
+    hardware = {
+      gpu = "intel";
 
-  monitors = {
-    eDP-1 = {
-      width = 1920;
-      height = 1080;
+      battery = true;
+      touchpad = true;
+    };
+
+    monitors = {
+      eDP-1 = {
+        width = 1920;
+        height = 1080;
+      };
     };
   };
 
@@ -37,16 +35,6 @@
     trackpoint = {
       enable = true;
       emulateWheel = true;
-    };
-
-    graphics = {
-      enable = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-        # ocl has some weird ca cert issue. no idea how to fix it. dont really need it anyway.
-        # intel-ocl
-        intel-vaapi-driver
-      ];
     };
   };
 

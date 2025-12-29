@@ -1,4 +1,9 @@
-{ lib, ... }:
+{
+  lib,
+  pkgs,
+  osConfig,
+  ...
+}:
 {
   home.shellAliases = {
     mkdir = "mkdir -pv";
@@ -7,6 +12,15 @@
     ls = "eza";
     cat = "bat";
   };
+
+  home.packages =
+    with pkgs;
+    [
+      brightnessctl
+    ]
+    ++ (lib.optionals osConfig.reverb.hardware.battery [
+      pkgs.acpi
+    ]);
 
   programs = {
     fish = {

@@ -1,47 +1,38 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./hardware-configuration.nix
   ];
 
-  capabilities = {
-    audio.enable = true;
-    graphics.enable = true;
-  };
+  reverb = {
+    hardware = {
+      gpu = "amd";
 
-  monitors = {
-    DP-1 = {
-      width = 1920;
-      height = 1080;
-
-      refreshRate = 144.0;
+      bluetooth = false;
+      wifi = false;
     };
 
-    HDMI-A-1 = {
-      width = 1920;
-      height = 1080;
+    monitors = {
+      DP-1 = {
+        width = 1920;
+        height = 1080;
 
-      offsetX = -1920;
-    };
-  };
+        refreshRate = 144.0;
+      };
 
-  services = {
-    fstrim.enable = true;
+      HDMI-A-1 = {
+        width = 1920;
+        height = 1080;
 
-    # This stops my GPU from repeatedly crashing.
-    udev.extraRules = ''
-      SUBSYSTEM=="drm", KERNEL=="card1", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="high"
-    '';
-  };
-
-  hardware = {
-    graphics = {
-      enable = true;
-      extraPackages = with pkgs; [ mesa ];
+        offsetX = -1920;
+      };
     };
   };
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  # This stops my GPU from repeatedly crashing.
+  services.udev.extraRules = ''
+    SUBSYSTEM=="drm", KERNEL=="card1", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="high"
+  '';
 
   system.stateVersion = "25.11";
   networking.hostName = "echosdesktop";
