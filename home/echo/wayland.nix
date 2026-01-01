@@ -23,7 +23,6 @@
   home.packages = with pkgs; [
     wl-clipboard
     self'.packages.screenshooter
-    aseprite
     nautilus
   ];
 

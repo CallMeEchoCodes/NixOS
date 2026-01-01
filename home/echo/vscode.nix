@@ -56,6 +56,13 @@
         "qt-qml.qmlls.customExePath" = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
         "qt-qml.qmlls.useQmlImportPathEnvVar" = true;
 
+        "workbench.editorAssociations" = {
+          "{hexdiff}:/**/*.*" = "hexEditor.hexedit";
+          "{git,gitlens,chat-editing-snapshot-text-model,copilot,git-graph,git-graph-3}:/**/*.qrc" =
+            "default";
+          "*.qrc" = "qt-core.qrcEditor";
+        };
+
         # TODO: figure this out
         # "nix.serverSettings" = {
         #   "nixd" = {

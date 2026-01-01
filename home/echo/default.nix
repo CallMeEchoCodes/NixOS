@@ -57,6 +57,8 @@
       keepassxc # i switched to bitwarden but there is a decent chance i missed stuff so this is still here
       bitwarden-desktop
 
+      # aseprite # build failure (https://github.com/NixOS/nixpkgs/issues/475832), disabled for now
+
       zenity
     ];
 
