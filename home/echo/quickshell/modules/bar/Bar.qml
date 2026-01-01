@@ -42,7 +42,7 @@ Scope {
                     anchors.top: parent.top
 
                     width: parent.width
-                    height: parent.height / 3
+                    height: parent.height / parent.children.length
 
                     Stats {
                         anchors.top: parent.top
@@ -52,7 +52,7 @@ Scope {
 
                 Item {
                     anchors.centerIn: parent
-                    height: parent.height / 3
+                    height: parent.height / parent.children.length
 
                     Workspaces {
                         screen: window.screen
@@ -63,7 +63,7 @@ Scope {
                 Item {
                     anchors.bottom: parent.bottom
                     width: parent.width
-                    height: parent.height / 3
+                    height: parent.height / parent.children.length
 
                     Rectangle {
                         width: parent.width

@@ -9,4 +9,6 @@ Scope {
     ControlCentre {}
 
     Wallpaper {}
+
+    // Notifications {}
 }

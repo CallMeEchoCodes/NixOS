@@ -17,6 +17,9 @@
     with pkgs;
     [
       brightnessctl
+      jq
+      ffmpeg
+      yt-dlp
     ]
     ++ (lib.optionals osConfig.reverb.hardware.battery [
       pkgs.acpi

@@ -47,14 +47,15 @@
         ];
       })
 
-      keepassxc
-
       mpv
       audacity
       pwvucontrol
 
       renderdoc
       blockbench
+
+      keepassxc # i switched to bitwarden but there is a decent chance i missed stuff so this is still here
+      bitwarden-desktop
 
       zenity
     ];

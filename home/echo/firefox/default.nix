@@ -101,6 +101,7 @@
           tree-style-tab
           firefox-color # required for catppuccin
           stylus
+          bitwarden
         ];
 
         settings = {
