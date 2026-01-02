@@ -140,13 +140,9 @@
       };
 
       windowrule = [
-        "noblur, title:windowkill"
-        "float,title:UNDERTALE"
-        "noinitialfocus,class:^jetbrains-.*$,floating:1,title:^$|^\\s$|^win\\d+$"
-      ];
-
-      layerrule = [
-        "ignorezero, vicinae"
+        "no_blur true, match:title windowkill"
+        "float true, match:title UNDERTALE"
+        "no_initial_focus true, match:class ^jetbrains-.*$, match:float true, match:title ^$|^\\s$|^win\\d+$"
       ];
 
       animations = {
@@ -168,6 +164,5 @@
         ];
       };
     };
-
   };
 }
