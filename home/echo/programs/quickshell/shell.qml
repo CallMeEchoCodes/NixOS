@@ -10,5 +10,5 @@ Scope {
 
     Wallpaper {}
 
-    // Notifications {}
+    Notifications {}
 }

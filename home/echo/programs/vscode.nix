@@ -55,6 +55,7 @@
 
         "qt-qml.qmlls.customExePath" = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
         "qt-qml.qmlls.useQmlImportPathEnvVar" = true;
+        "qt-qml.doNotAskForQmllsDownload" = true;
 
         "workbench.editorAssociations" = {
           "{hexdiff}:/**/*.*" = "hexEditor.hexedit";
