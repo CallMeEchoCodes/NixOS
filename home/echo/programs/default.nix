@@ -38,5 +38,10 @@
     # aseprite # build failure (https://github.com/NixOS/nixpkgs/issues/475832), disabled for now
 
     zenity
+
+    nodePackages.pnpm
+    nodejs
+
+    wineWowPackages.waylandFull
   ];
 }
