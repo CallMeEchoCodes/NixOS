@@ -60,10 +60,11 @@
         float_switch_override_focus = true;
 
         sensitivity = if osConfig.reverb.hardware.touchpad then 0.5 else 2.0;
-        accel_profile = if osConfig.reverb.hardware.touchpad then "adaptive" else "flat";
+        accel_profile = "flat";
 
         # unnatural scroll
         touchpad.natural_scroll = false;
+        touchpad.disable_while_typing = false;
       };
 
       dwindle = {
