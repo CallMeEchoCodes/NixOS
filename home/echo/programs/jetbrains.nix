@@ -4,13 +4,12 @@
   ...
 }:
 {
-  home.packages = with inputs.nix-jetbrains-plugins.lib.${pkgs.stdenv.hostPlatform.system}; [
-    (buildIdeWithPlugins pkgs.jetbrains "idea" [
+  home.packages = with inputs.nix-jetbrains-plugins.lib; [
+    (buildIdeWithPlugins pkgs "idea" [
       "com.github.catppuccin.jetbrains"
-      "com.demonwav.minecraft-dev"
       "com.github.catppuccin.jetbrains_icons"
+      "com.demonwav.minecraft-dev"
       "GLSL"
-      "com.intellij.plugins.xwinkeymap"
     ])
   ];
 }
