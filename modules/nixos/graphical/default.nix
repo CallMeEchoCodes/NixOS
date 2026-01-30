@@ -35,6 +35,10 @@
         xorg.libXcursor
         xorg.libXrandr
         xorg.libXxf86vm
+
+        vulkan-tools
+        vulkan-validation-layers
+        vulkan-loader
       ]
     );
   };

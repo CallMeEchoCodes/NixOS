@@ -10,6 +10,8 @@
     extraGroups = [
       "wheel"
       "nix"
+      "audio"
+      "video"
     ];
 
     home = "/home/echo";
