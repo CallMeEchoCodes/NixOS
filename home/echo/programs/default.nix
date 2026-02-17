@@ -42,6 +42,12 @@
     nodePackages.pnpm
     nodejs
 
-    wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
+
+    libreoffice
+    obsidian
+
+    blender
+    firebird-emu
   ];
 }

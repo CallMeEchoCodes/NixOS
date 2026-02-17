@@ -15,4 +15,11 @@
     ./locale.nix
     ./shell.nix
   ];
+
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+  virtualisation.libvirtd.qemu = {
+    swtpm.enable = true;
+  };
+  programs.virt-manager.enable = true;
 }

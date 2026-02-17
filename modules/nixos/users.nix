@@ -12,6 +12,7 @@
       "nix"
       "audio"
       "video"
+      "libvirtd"
     ];
 
     home = "/home/echo";

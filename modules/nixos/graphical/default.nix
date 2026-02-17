@@ -17,6 +17,12 @@
     gpm.enable = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    vulkan-tools
+    vulkan-validation-layers
+    vulkan-loader
+  ];
+
   environment.sessionVariables = {
     LD_LIBRARY_PATH = map (pkg: "${pkg}/lib") (
       with pkgs;
@@ -30,11 +36,11 @@
 
         udev # oshi
 
-        xorg.libX11
-        xorg.libXext
-        xorg.libXcursor
-        xorg.libXrandr
-        xorg.libXxf86vm
+        libx11
+        libxext
+        libxcursor
+        libxrandr
+        libxxf86vm
 
         vulkan-tools
         vulkan-validation-layers
