@@ -16,6 +16,11 @@
               type = lib.types.int;
             };
 
+            primary = lib.mkOption {
+              type = lib.types.bool;
+              default = false;
+            };
+
             refreshRate = lib.mkOption {
               type = lib.types.float;
               default = 60.0;

@@ -67,6 +67,13 @@
         touchpad.disable_while_typing = false;
       };
 
+      device = {
+        name = "wacom-co.-ltd.-wacom-one-pen-tablet-small";
+        output = builtins.elemAt (builtins.attrNames (
+          lib.attrsets.filterAttrs (name: value: value.primary) osConfig.reverb.monitors
+        )) 0;
+      };
+
       dwindle = {
         pseudotile = true;
         preserve_split = true;

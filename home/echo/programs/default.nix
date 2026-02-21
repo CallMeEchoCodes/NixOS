@@ -44,10 +44,11 @@
 
     wineWow64Packages.waylandFull
 
-    libreoffice
+    libreoffice-fresh
     obsidian
 
     blender
     firebird-emu
+    onlyoffice-desktopeditors
   ];
 }
