@@ -8,6 +8,7 @@
 {
   catppuccin.firefox.enable = false; # i have my own catppucccin firefox color theme
 
+  programs.chromium.enable = true;
   programs.firefox = {
     enable = true;
 

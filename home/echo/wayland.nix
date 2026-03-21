@@ -22,6 +22,7 @@
 
   home.packages = with pkgs; [
     wl-clipboard
+    hyprpicker
     self'.packages.screenshooter
     nautilus
   ];
@@ -111,6 +112,7 @@
         "$mod, V, togglefloating"
 
         "$mod SHIFT, S, exec, ${self'.packages.screenshooter}/bin/screenshooter"
+        "$mod SHIFT, C, exec, ${pkgs.hyprpicker}/bin/hyprpicker -a"
 
         "$mod SHIFT, M, exit"
 
