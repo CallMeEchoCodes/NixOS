@@ -1,7 +1,6 @@
-{ inputs, ... }:
+{ ... }:
 {
   imports = [
-    inputs.nur.modules.homeManager.default
     ./direnv.nix
     ./shell.nix
     ./wayland.nix
@@ -9,7 +8,10 @@
     ./programs
   ];
 
-  xdg.userDirs.enable = true;
+  xdg.userDirs = {
+    enable = true;
+    setSessionVariables = true;
+  };
 
   home.stateVersion = "25.11";
 }

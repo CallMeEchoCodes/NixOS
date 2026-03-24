@@ -1,8 +1,8 @@
 {
   lib,
+  util,
   config,
   pkgs,
-  self,
   ...
 }:
 {
@@ -164,7 +164,7 @@
             settings = {
               force = true;
               # todo: store in plain text and decode at build time (this is just some css)
-              chunkedUserStyleRules0 = self.lib.toBase64 ''
+              chunkedUserStyleRules0 = util.toBase64 ''
                 tab-item {
                 	box-shadow: 0 0 var(--tab-dropshadow-blur) rgba(0, 0, 0, 0.0) !important;
                 }

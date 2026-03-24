@@ -1,6 +1,5 @@
 {
-  self,
-  self',
+  util,
   inputs,
   system,
   ...
@@ -12,8 +11,7 @@
     backupFileExtension = "homemanager.bak";
     extraSpecialArgs = {
       inherit inputs;
-      inherit self;
-      inherit self';
+      inherit util;
       inherit system;
     };
 

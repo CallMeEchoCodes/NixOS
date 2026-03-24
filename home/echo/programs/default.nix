@@ -42,13 +42,16 @@
     nodePackages.pnpm
     nodejs
 
+    python3
+
     wineWow64Packages.waylandFull
 
-    libreoffice-fresh
     obsidian
 
-    blender
-    firebird-emu
     onlyoffice-desktopeditors
+    krita
+    blender
+
+    firebird-emu
   ];
 }

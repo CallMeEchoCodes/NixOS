@@ -2,8 +2,6 @@
   description = "Echo's personal NixOS flake";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    easy-hosts.url = "github:tgirlcloud/easy-hosts";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -33,11 +31,38 @@
   };
 
   outputs =
-    inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "x86_64-linux"
-      ];
-      imports = [ ./flake ];
+    inputs@{ nixpkgs, ... }:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+      util = import ./util.nix (inputs // { lib = nixpkgs.lib; });
+      mkNixOSSystem =
+        name:
+        (nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit util;
+            inherit system;
+            inherit inputs;
+          };
+
+          modules = [
+            ./hosts/${name}
+            ./modules/nixos
+            ./modules/packages
+          ];
+        });
+    in
+    {
+      nixosConfigurations = {
+        laptop = (mkNixOSSystem "laptop");
+        desktop = (mkNixOSSystem "desktop");
+      };
+
+      devShells.${system}.default = pkgs.mkShellNoCC {
+        buildInputs = with pkgs; [
+          nixd
+          nixfmt
+        ];
+      };
     };
 }

@@ -11,37 +11,44 @@
     };
   };
 
-  gtk = {
-    enable = true;
+  gtk =
+    let
+      theme = {
+        name = "catppuccin-mocha-pink-standard";
+        package = pkgs.catppuccin-gtk.override {
+          size = "standard";
+          accents = [ config.catppuccin.accent ];
+          variant = config.catppuccin.flavor;
+        };
+      };
+    in
+    {
+      enable = true;
 
-    theme = {
-      name = "catppuccin-mocha-pink-standard";
-      package = pkgs.catppuccin-gtk.override {
-        size = "standard";
-        accents = [ config.catppuccin.accent ];
-        variant = config.catppuccin.flavor;
+      inherit theme;
+
+      font = {
+        name = "Inter";
+        size = 11;
+      };
+
+      gtk3.extraConfig = {
+        gtk-application-prefer-dark-theme = true;
+
+        gtk-xft-antialias = 1;
+        gtk-xft-hinting = 1;
+        gtk-xft-hintstyle = "hintslight";
+      };
+
+      gtk4 = {
+        inherit theme;
+        extraConfig = {
+          gtk-application-prefer-dark-theme = true;
+
+          gtk-xft-antialias = 1;
+          gtk-xft-hinting = 1;
+          gtk-xft-hintstyle = "hintslight";
+        };
       };
     };
-
-    font = {
-      name = "Inter";
-      size = 11;
-    };
-
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-
-      gtk-xft-antialias = 1;
-      gtk-xft-hinting = 1;
-      gtk-xft-hintstyle = "hintslight";
-    };
-
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-
-      gtk-xft-antialias = 1;
-      gtk-xft-hinting = 1;
-      gtk-xft-hintstyle = "hintslight";
-    };
-  };
 }

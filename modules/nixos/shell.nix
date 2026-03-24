@@ -4,7 +4,7 @@
   programs.fish.enable = true;
 
   # fish enables this by default and it makes switch unbearably slow
-  documentation.man.generateCaches = false;
+  documentation.man.cache.enable = false;
 
   environment.systemPackages = with pkgs; [
     wget
