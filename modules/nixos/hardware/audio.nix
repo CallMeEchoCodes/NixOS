@@ -19,9 +19,13 @@
         support32Bit = true;
       };
 
-      wireplumber.extraConfig.bluetoothEnhancements = {
-        "monitor.bluez.properties" = {
-          "bluez5.enable-hw-volume" = true;
+      wireplumber = {
+        enable = true;
+
+        extraConfig.bluetoothEnhancements = {
+          "monitor.bluez.properties" = {
+            "bluez5.enable-hw-volume" = true;
+          };
         };
       };
     };

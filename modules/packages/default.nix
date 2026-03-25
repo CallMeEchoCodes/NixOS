@@ -8,6 +8,7 @@
       in
       {
         screenshooter = pkgs.callPackage ./screenshooter { };
+        compressvideo = pkgs.callPackage ./compressvideo { };
       }
     )
   ];

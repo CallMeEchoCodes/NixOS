@@ -6,6 +6,7 @@
   wl-clipboard,
   xdg-user-dirs,
   coreutils,
+  bash,
   ...
 }:
 writeShellApplication {
@@ -17,6 +18,7 @@ writeShellApplication {
     wl-clipboard
     xdg-user-dirs
     coreutils
+    bash
   ];
   text = builtins.readFile ./screenshooter.sh;
 }

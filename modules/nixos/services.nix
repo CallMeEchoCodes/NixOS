@@ -11,5 +11,10 @@
       nssmdns4 = true;
       openFirewall = true;
     };
+
+    dbus = {
+      enable = true;
+      implementation = "broker";
+    };
   };
 }

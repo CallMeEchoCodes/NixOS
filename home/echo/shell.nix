@@ -20,6 +20,7 @@
       jq
       ffmpeg
       yt-dlp
+      compressvideo
     ]
     ++ (lib.optionals osConfig.reverb.hardware.battery [
       pkgs.acpi

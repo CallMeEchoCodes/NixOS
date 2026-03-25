@@ -24,6 +24,9 @@
     zip
     unzip
     zstd
+    gnutar
+    gzip
+    xz
 
     cacert
   ];
