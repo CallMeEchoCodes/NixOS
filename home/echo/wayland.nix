@@ -29,6 +29,7 @@
   services.hyprpolkitagent.enable = true;
   services.kdeconnect.enable = true;
 
+  xdg.mimeApps.enable = true;
   xdg.mimeApps.defaultApplications = lib.attrsets.genAttrs [
     "inode/directory"
     "application/x-gnome-saved-search"
