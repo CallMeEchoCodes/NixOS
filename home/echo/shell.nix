@@ -35,6 +35,8 @@
       '';
     };
 
+    nix-your-shell.enable = true;
+
     git = {
       enable = true;
 
@@ -85,6 +87,7 @@
 
       settings = {
         format = lib.concatStrings [
+          "$nix_shell"
           "$directory"
           "$git_branch"
           "$character"
@@ -94,6 +97,11 @@
           success_symbol = "[➜](green)";
           error_symbol = "[➜](red)";
           vicmd_symbol = "[➜](yellow)";
+        };
+
+        nix_shell = {
+          format = "[[$symbol$state](bg:blue fg:base) ](blue)";
+          symbol = "❄️ ";
         };
 
         git_branch = {
