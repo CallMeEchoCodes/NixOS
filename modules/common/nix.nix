@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   nix = {
     # fork of cppnix, many cool new features (also faster)
@@ -14,6 +14,9 @@
 
       auto-optimise-store = true;
 
+      auto-allocate-uids = true;
+      use-cgroups = true;
+
       max-jobs = "auto";
 
       # ALWAYS ask before accepting a configuration
@@ -26,6 +29,9 @@
       experimental-features = [
         "nix-command"
         "flakes"
+
+        "cgroups"
+        "auto-allocate-uids"
       ];
 
       substituters = [
@@ -42,16 +48,5 @@
 
       use-xdg-base-directories = true;
     };
-  };
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowBroken = false;
-    };
-
-    overlays = [
-      inputs.nix-vscode-extensions.overlays.default
-    ];
   };
 }

@@ -13,6 +13,7 @@
           jnoortheen.nix-ide
           mkhl.direnv
           astro-build.astro-vscode
+          ms-python.python
           github.vscode-github-actions
 
           eamodio.gitlens
@@ -21,6 +22,7 @@
           k--kato.intellij-idea-keybindings
 
           ms-vscode.hexeditor
+          esbenp.prettier-vscode
         ])
         ++ (with pkgs.open-vsx; [
           theqtcompany.qt-qml
@@ -63,7 +65,13 @@
             "default";
           "*.qrc" = "qt-core.qrcEditor";
         };
+        "[typescript]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
 
+        "[astro]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
         # TODO: figure this out
         # "nix.serverSettings" = {
         #   "nixd" = {

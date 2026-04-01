@@ -1,6 +1,7 @@
 { lib, config, ... }:
 {
   imports = [
+    ./cpu
     ./gpu
     ./bluetooth.nix
     ./wifi.nix

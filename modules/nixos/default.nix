@@ -5,11 +5,11 @@
 {
   imports = [
     ../common
+    ./nixos-init.nix
     ./hardware
     ./virtualisation.nix
     inputs.nur.modules.nixos.default
     ./boot.nix
-    ./nix.nix
     ./users.nix
     ./graphical
     ./services.nix

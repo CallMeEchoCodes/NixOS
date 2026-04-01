@@ -6,6 +6,7 @@
 
   reverb = {
     hardware = {
+      cpu = "intel";
       gpu = "amd";
 
       bluetooth = false;

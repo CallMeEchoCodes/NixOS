@@ -11,5 +11,9 @@
       "com.demonwav.minecraft-dev"
       "GLSL"
     ])
+    (buildIdeWithPlugins pkgs "pycharm" [
+      "com.github.catppuccin.jetbrains"
+      "com.github.catppuccin.jetbrains_icons"
+    ])
   ];
 }
