@@ -1,5 +1,7 @@
 { lib, ... }:
 {
+  eachSystem = lib.genAttrs [ "x86_64-linux" ];
+
   # credit: https://gist.github.com/manveru/74eb41d850bc146b7e78c4cb059507e2
   toBase64 =
     text:

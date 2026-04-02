@@ -33,15 +33,12 @@
   outputs =
     inputs@{ nixpkgs, ... }:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
       util = import ./util.nix (inputs // { lib = nixpkgs.lib; });
-      mkNixOSSystem =
+      mkNixOSConfiguration =
         name:
         (nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit util;
-            inherit system;
             inherit inputs;
           };
 
@@ -54,15 +51,23 @@
     in
     {
       nixosConfigurations = {
-        laptop = (mkNixOSSystem "laptop");
-        desktop = (mkNixOSSystem "desktop");
+        laptop = (mkNixOSConfiguration "laptop");
+        desktop = (mkNixOSConfiguration "desktop");
       };
 
-      devShells.${system}.default = pkgs.mkShellNoCC {
-        buildInputs = with pkgs; [
-          nixd
-          nixfmt
-        ];
-      };
+      devShells = util.eachSystem (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          default = pkgs.mkShellNoCC {
+            buildInputs = with pkgs; [
+              nixd
+              nixfmt
+            ];
+          };
+        }
+      );
     };
 }
