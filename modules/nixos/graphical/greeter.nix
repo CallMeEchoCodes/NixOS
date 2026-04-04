@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   services.greetd = {
-    enable = true;
+    enable = config.reverb.profiles.graphical.enable;
 
     settings = {
       default_session = {

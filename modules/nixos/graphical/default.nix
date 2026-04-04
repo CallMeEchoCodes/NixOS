@@ -1,6 +1,8 @@
 {
   inputs,
   pkgs,
+  lib,
+  config,
   ...
 }:
 {
@@ -9,82 +11,93 @@
     ./wayland.nix
     ./greeter.nix
     ./fonts.nix
-    ./security.nix
   ];
 
-  services = {
-    libinput.enable = true;
-    gpm.enable = true;
-  };
+  config = lib.mkIf config.reverb.profiles.graphical.enable {
+    nixpkgs.overlays = [ inputs.nix-vscode-extensions.overlays.default ];
 
-  environment.systemPackages = with pkgs; [
-    vulkan-tools
-    vulkan-validation-layers
-    vulkan-loader
-  ];
+    programs.dconf.enable = true;
 
-  environment.sessionVariables = {
-    LD_LIBRARY_PATH = map (pkg: "${pkg}/lib") (
-      with pkgs;
-      [
-        # required for lwjgl games
+    services = {
+      libinput.enable = true;
+      gpm.enable = true;
+      udisks2.enable = true;
+      printing.enable = true;
+    };
+
+    environment.systemPackages = with pkgs; [
+      hunspell
+      hunspellDicts.en_AU
+      hunspellDicts.en_GB-ise
+
+      vulkan-tools
+      vulkan-validation-layers
+      vulkan-loader
+    ];
+
+    environment.sessionVariables = {
+      LD_LIBRARY_PATH = map (pkg: "${pkg}/lib") (
+        with pkgs;
+        [
+          # required for lwjgl games
+          glfw
+          libpulseaudio
+          libGL
+          openal
+          stdenv.cc.cc
+
+          udev # oshi
+
+          libx11
+          libxext
+          libxcursor
+          libxrandr
+          libxxf86vm
+
+          vulkan-tools
+          vulkan-validation-layers
+          vulkan-loader
+        ]
+      );
+    };
+
+    qt.enable = true;
+
+    catppuccin = {
+      cache.enable = true;
+
+      accent = "pink";
+      flavor = "mocha";
+
+      enable = true;
+    };
+
+    console = {
+      earlySetup = true;
+      font = "${pkgs.terminus_font}/share/consolefonts/ter-v22n.psf.gz";
+      keyMap = "us";
+    };
+
+    programs.nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        renderdoc
+        libglvnd
         glfw
-        libpulseaudio
-        libGL
-        openal
-        stdenv.cc.cc
+      ];
+    };
 
-        udev # oshi
+    programs.kdeconnect.enable = true;
 
-        libx11
-        libxext
-        libxcursor
-        libxrandr
-        libxxf86vm
+    programs.steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
 
-        vulkan-tools
-        vulkan-validation-layers
-        vulkan-loader
-      ]
-    );
-  };
-
-  qt.enable = true;
-
-  catppuccin = {
-    cache.enable = true;
-
-    accent = "pink";
-    flavor = "mocha";
-
-    enable = true;
-  };
-
-  console = {
-    earlySetup = true;
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-v22n.psf.gz";
-    keyMap = "us";
-  };
-
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      renderdoc
-      libglvnd
-      glfw
-    ];
-  };
-
-  programs.kdeconnect.enable = true;
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-    ];
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
+    };
   };
 }

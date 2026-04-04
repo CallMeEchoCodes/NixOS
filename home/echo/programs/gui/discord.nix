@@ -1,7 +1,12 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  osConfig,
+  ...
+}:
 {
   programs.vesktop = {
-    enable = true;
+    enable = osConfig.reverb.profiles.graphical.enable;
     package = pkgs.vesktop.overrideAttrs (old: {
       preBuild = ''
         cp -r ${pkgs.electron.dist} electron-dist

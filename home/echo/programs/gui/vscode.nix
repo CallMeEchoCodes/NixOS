@@ -1,10 +1,11 @@
 {
   pkgs,
+  osConfig,
   ...
 }:
 {
   programs.vscode = {
-    enable = true;
+    enable = osConfig.reverb.profiles.graphical.enable;
     package = pkgs.vscodium;
 
     profiles.default = {

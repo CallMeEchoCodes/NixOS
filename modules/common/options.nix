@@ -1,48 +1,55 @@
 { lib, ... }:
 {
-  options.reverb.monitors = lib.mkOption {
-    description = "The set of monitors expected to be plugged in.";
+  options.reverb = {
+    profiles = {
+      graphical.enable = lib.mkEnableOption "Graphical";
+      server.enable = lib.mkEnableOption "Server";
+    };
 
-    type = lib.types.attrsOf (
-      lib.types.submodule (
-        { ... }:
-        {
-          options = {
-            width = lib.mkOption {
-              type = lib.types.int;
-            };
+    monitors = lib.mkOption {
+      description = "The set of monitors expected to be plugged in.";
 
-            height = lib.mkOption {
-              type = lib.types.int;
-            };
+      type = lib.types.attrsOf (
+        lib.types.submodule (
+          { ... }:
+          {
+            options = {
+              width = lib.mkOption {
+                type = lib.types.int;
+              };
 
-            primary = lib.mkOption {
-              type = lib.types.bool;
-              default = false;
-            };
+              height = lib.mkOption {
+                type = lib.types.int;
+              };
 
-            refreshRate = lib.mkOption {
-              type = lib.types.float;
-              default = 60.0;
-            };
+              primary = lib.mkOption {
+                type = lib.types.bool;
+                default = false;
+              };
 
-            offsetX = lib.mkOption {
-              type = lib.types.int;
-              default = 0;
-            };
+              refreshRate = lib.mkOption {
+                type = lib.types.float;
+                default = 60.0;
+              };
 
-            offsetY = lib.mkOption {
-              type = lib.types.int;
-              default = 0;
-            };
+              offsetX = lib.mkOption {
+                type = lib.types.int;
+                default = 0;
+              };
 
-            scale = lib.mkOption {
-              type = lib.types.float;
-              default = 1;
+              offsetY = lib.mkOption {
+                type = lib.types.int;
+                default = 0;
+              };
+
+              scale = lib.mkOption {
+                type = lib.types.float;
+                default = 1;
+              };
             };
-          };
-        }
-      )
-    );
+          }
+        )
+      );
+    };
   };
 }

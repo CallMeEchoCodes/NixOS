@@ -1,7 +1,7 @@
-{ ... }:
+{ osConfig, ... }:
 {
   programs.kitty = {
-    enable = true;
+    enable = osConfig.reverb.profiles.graphical.enable;
 
     settings = {
       font_size = 11.5;

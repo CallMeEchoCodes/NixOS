@@ -7,15 +7,16 @@
     ../common
     ./nixos-init.nix
     ./hardware
+    ./network
     ./virtualisation.nix
-    inputs.nur.modules.nixos.default
     ./boot.nix
     ./users.nix
     ./graphical
     ./services.nix
     ./locale.nix
     ./shell.nix
+    ./server.nix
+    ./security.nix
+    inputs.nur.modules.nixos.default
   ];
-
-  programs.dconf.enable = true;
 }

@@ -1,11 +1,11 @@
-{ inputs, ... }:
+{ inputs, osConfig, ... }:
 {
   imports = [
     inputs.vicinae.homeManagerModules.default
   ];
 
   services.vicinae = {
-    enable = true;
+    enable = osConfig.reverb.profiles.graphical.enable;
 
     systemd = {
       enable = true;

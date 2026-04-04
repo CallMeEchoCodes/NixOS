@@ -1,7 +1,7 @@
-{ ... }:
+{ osConfig, ... }:
 {
   qt = {
-    enable = true;
+    enable = osConfig.reverb.profiles.graphical.enable;
     platformTheme.name = "kvantum";
     style.name = "kvantum";
   };

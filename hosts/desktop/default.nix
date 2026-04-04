@@ -30,6 +30,10 @@
         offsetX = -1920;
       };
     };
+
+    profiles = {
+      graphical.enable = true;
+    };
   };
 
   # This stops my GPU from repeatedly crashing.

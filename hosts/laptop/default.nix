@@ -22,6 +22,10 @@
         primary = true;
       };
     };
+
+    profiles = {
+      graphical.enable = true;
+    };
   };
 
   boot.kernelParams = [

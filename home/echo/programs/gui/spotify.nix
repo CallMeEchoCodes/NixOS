@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  osConfig,
+  ...
+}:
 {
   imports = [
     inputs.spicetify-nix.homeManagerModules.spicetify
@@ -9,7 +14,7 @@
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
     in
     {
-      enable = true;
+      enable = osConfig.reverb.profiles.graphical.enable;
 
       theme = spicePkgs.themes.catppuccin;
       colorScheme = "mocha";

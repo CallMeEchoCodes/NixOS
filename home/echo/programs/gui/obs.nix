@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, osConfig, ... }:
 {
   programs.obs-studio = {
-    enable = true;
+    enable = osConfig.reverb.profiles.graphical.enable;
 
     # required for hw accel, hydra doesnt build this config for some reason so may be a good idea to disable this on my laptop in future?
     package = pkgs.obs-studio.override {

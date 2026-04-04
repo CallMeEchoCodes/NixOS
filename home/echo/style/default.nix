@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, osConfig, ... }:
 {
   imports = [
     inputs.catppuccin.homeModules.catppuccin
@@ -10,6 +10,6 @@
     accent = "pink";
     flavor = "mocha";
 
-    enable = true;
+    enable = osConfig.reverb.profiles.graphical.enable;
   };
 }
