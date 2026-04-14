@@ -42,7 +42,7 @@
 
       zenity
 
-      nodePackages.pnpm
+      pnpm
       nodejs
 
       python3
