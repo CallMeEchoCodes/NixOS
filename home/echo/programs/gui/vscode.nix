@@ -4,17 +4,16 @@
   ...
 }:
 {
-  programs.vscode = {
+  programs.vscodium = {
     enable = osConfig.reverb.profiles.graphical.enable;
-    package = pkgs.vscodium;
 
     profiles.default = {
       extensions =
         (with pkgs.vscode-extensions; [
           jnoortheen.nix-ide
+          sumneko.lua
           mkhl.direnv
           astro-build.astro-vscode
-          ms-python.python
           github.vscode-github-actions
 
           eamodio.gitlens
@@ -59,6 +58,10 @@
         "qt-qml.qmlls.customExePath" = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
         "qt-qml.qmlls.useQmlImportPathEnvVar" = true;
         "qt-qml.doNotAskForQmllsDownload" = true;
+
+        "Lua.workspace.library" = [
+          "${pkgs.hyprland}/share/hypr/stubs"
+        ];
 
         "workbench.editorAssociations" = {
           "{hexdiff}:/**/*.*" = "hexEditor.hexedit";

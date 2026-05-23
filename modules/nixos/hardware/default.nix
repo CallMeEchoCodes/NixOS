@@ -21,6 +21,7 @@
 
     hardware = {
       enableRedistributableFirmware = true;
+      xpadneo.enable = config.reverb.hardware.video;
 
       graphics = lib.mkIf config.reverb.hardware.video {
         enable = true;

@@ -3,7 +3,6 @@
   imports = [
     ./direnv.nix
     ./shell.nix
-    ./wayland.nix
     ./style
     ./programs
   ];

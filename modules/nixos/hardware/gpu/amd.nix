@@ -9,10 +9,12 @@
     services.xserver.videoDrivers = [ "amdgpu" ];
     boot.kernelModules = [ "amdgpu" ];
 
-    # OpenCL
     hardware.graphics.extraPackages = with pkgs; [
+      # OpenCL
       rocmPackages.clr
       rocmPackages.clr.icd
+
+      vulkan-loader
     ];
   };
 }

@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
   imports = [
     ./amd.nix
@@ -15,5 +15,12 @@
     );
 
     default = null;
+  };
+
+  config = lib.mkIf (config.reverb.hardware.gpu != null) {
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
   };
 }

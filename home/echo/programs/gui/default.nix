@@ -15,6 +15,7 @@
     ./terminal.nix
     ./vicinae.nix
     ./vscode.nix
+    ./hyprland
   ];
 
   config = lib.mkIf osConfig.reverb.profiles.graphical.enable {
@@ -38,14 +39,20 @@
       keepassxc # i switched to bitwarden but there is a decent chance i missed stuff so this is still here
       bitwarden-desktop
 
-      # aseprite # build failure (https://github.com/NixOS/nixpkgs/issues/475832), disabled for now
+      aseprite
 
       zenity
 
       pnpm
       nodejs
 
-      python3
+      (python3.withPackages (
+        python-pkgs: with python-pkgs; [
+          tkinter
+        ]
+      ))
+
+      imhex
 
       wineWow64Packages.waylandFull
 
