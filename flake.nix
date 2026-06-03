@@ -13,11 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +20,7 @@
 
     nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
 
+    nixvim.url = "github:nix-community/nixvim";
     catppuccin.url = "github:catppuccin/nix";
     vicinae.url = "github:vicinaehq/vicinae";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";

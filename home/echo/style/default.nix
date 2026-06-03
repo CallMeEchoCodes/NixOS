@@ -10,6 +10,7 @@
     accent = "pink";
     flavor = "mocha";
 
+    autoEnable = osConfig.reverb.profiles.graphical.enable;
     enable = osConfig.reverb.profiles.graphical.enable;
   };
 }

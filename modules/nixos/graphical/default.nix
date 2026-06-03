@@ -29,6 +29,10 @@
       hunspell
       hunspellDicts.en_AU
       hunspellDicts.en_GB-ise
+
+      vulkan-tools
+      vulkan-validation-layers
+      vulkan-tools-lunarg
     ];
 
     qt.enable = true;
@@ -40,6 +44,7 @@
       flavor = "mocha";
 
       enable = true;
+      autoEnable = true;
     };
 
     console = {

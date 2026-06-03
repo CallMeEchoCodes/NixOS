@@ -10,7 +10,7 @@
       enable = true;
       accent = "dark";
     };
-    
+
     catppuccin.hyprland.enable = false;
 
     home.pointerCursor = {
@@ -49,10 +49,10 @@
       configType = "lua";
       extraConfig =
         let
-          monitors = lib.strings.concatStringsSep "\n" (
+          monitors = lib.strings.concatStringsSep ",\n" (
             lib.attrsets.mapAttrsToList (
               name: monitor: with monitor; ''
-                monitors["${name}"] = {
+                ["${name}"] = {
                   width = ${toString width},
                   height = ${toString height},
                   primary = ${if primary then "true" else "false"},
@@ -70,17 +70,19 @@
             lib.attrsets.filterAttrs (name: value: value.primary) osConfig.reverb.monitors
           )) 0;
         in
-        ''
-          local primary_monitor = "${primaryMonitor}"
-          
-	  local monitors = {}
-	  ${monitors}
-
-	  local touchpad = ${if osConfig.reverb.hardware.touchpad then "true" else "false"}
-
-          ${builtins.readFile ./hyprland.lua}
-        '';
+        (builtins.replaceStrings
+          [
+            "monitors = {}"
+            "primary_monitor = \"\""
+            "touchpad = false"
+          ]
+          [
+            "monitors = {${monitors}}"
+            "primary_monitor = \"${primaryMonitor}\""
+            "touchpad = ${if osConfig.reverb.hardware.touchpad then "true" else "false"}"
+          ]
+          (builtins.readFile ./hyprland.lua)
+        );
     };
   };
 }
-

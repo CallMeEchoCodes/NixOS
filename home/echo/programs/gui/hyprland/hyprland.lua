@@ -1,5 +1,23 @@
 local mod = "SUPER"
 
+---@class Vec2
+---@field x number
+---@field y number
+
+---@class Monitor
+---@field width integer
+---@field height integer
+---@field primary boolean
+---@field refresh_rate number
+---@field offset Vec2
+---@field scale number
+
+-- These locals will be replaced with real values by nix, see ./default.nix
+---@type { string: Monitor }
+local monitors = {}
+local primary_monitor = ""
+local touchpad = false
+
 hl.config({
   general = {
     border_size = 0,

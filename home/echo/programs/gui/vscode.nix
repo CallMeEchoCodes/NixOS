@@ -76,6 +76,8 @@
         "[astro]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
+
+        "chat.disableAIFeatures" = "true"; # begone plagarism machine.
         # TODO: figure this out
         # "nix.serverSettings" = {
         #   "nixd" = {

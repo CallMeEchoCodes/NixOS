@@ -37,7 +37,7 @@
       blockbench
 
       keepassxc # i switched to bitwarden but there is a decent chance i missed stuff so this is still here
-      bitwarden-desktop
+      # bitwarden-desktop # disabled as the electron version it uses is deprecated.
 
       aseprite
 
