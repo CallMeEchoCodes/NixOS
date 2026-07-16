@@ -18,6 +18,14 @@
         "com.github.catppuccin.jetbrains"
         "com.github.catppuccin.jetbrains_icons"
       ])
+      (buildIdeWithPlugins pkgs "clion" [
+        "com.github.catppuccin.jetbrains"
+        "com.github.catppuccin.jetbrains_icons"
+      ])
+      (buildIdeWithPlugins pkgs "rust-rover" [
+        "com.github.catppuccin.jetbrains"
+        "com.github.catppuccin.jetbrains_icons"
+      ])
     ];
   };
 }

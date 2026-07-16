@@ -4,7 +4,7 @@
     inputs.vicinae.homeManagerModules.default
   ];
 
-  services.vicinae = {
+  programs.vicinae = {
     enable = osConfig.reverb.profiles.graphical.enable;
 
     systemd = {
@@ -13,17 +13,6 @@
     };
 
     settings = {
-      theme = {
-        light = {
-          name = "catppuccin-latte";
-          icon_theme = "default";
-        };
-        dark = {
-          name = "catppuccin-mocha";
-          icon_theme = "default";
-        };
-      };
-
       launcher_window = {
         opacity = 1.0;
       };

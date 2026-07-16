@@ -30,7 +30,7 @@
         xdg-desktop-portal-hyprland
       ];
 
-      # xdgOpenUsePortal = true;
+      xdgOpenUsePortal = false;
 
       config = {
         common.default = [ "gtk" ];

@@ -95,6 +95,8 @@ hl.bind(mod .. " + SHIFT + C",
 hl.bind(mod .. " + RETURN", hl.dsp.exec_cmd("kitty"))
 hl.bind(mod .. " + R", hl.dsp.exec_cmd("vicinae toggle"))
 
+hl.bind(mod .. " + F1", hl.dsp.exec_cmd("touch /tmp/trigger"))
+
 for i = 1, 9 do
   hl.bind(mod .. " + " .. i, hl.dsp.focus({ workspace = i }))
   hl.bind(mod .. " +  SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))

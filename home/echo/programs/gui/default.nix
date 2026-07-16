@@ -46,6 +46,8 @@
       pnpm
       nodejs
 
+      rgp # radeon graphics profiler
+
       (python3.withPackages (
         python-pkgs: with python-pkgs; [
           tkinter

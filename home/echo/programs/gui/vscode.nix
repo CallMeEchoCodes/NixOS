@@ -23,6 +23,7 @@
 
           ms-vscode.hexeditor
           esbenp.prettier-vscode
+          rust-lang.rust-analyzer
         ])
         ++ (with pkgs.open-vsx; [
           theqtcompany.qt-qml
@@ -78,6 +79,9 @@
         };
 
         "chat.disableAIFeatures" = "true"; # begone plagarism machine.
+        "[svelte]" = {
+          "editor.defaultFormatter" = "svelte.svelte-vscode";
+        };
         # TODO: figure this out
         # "nix.serverSettings" = {
         #   "nixd" = {
