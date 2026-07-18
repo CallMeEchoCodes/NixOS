@@ -6,14 +6,21 @@
   };
 
   config = {
-    services.upower = {
-      enable = config.reverb.hardware.battery;
+    powerManagement.enable = config.reverb.hardware.battery;
 
-      percentageLow = 20;
-      percentageCritical = 5;
-      percentageAction = 3;
+    services = {
+      tlp.enable = config.reverb.hardware.battery;
+      thermald.enable = config.reverb.hardware.battery && (config.reverb.hardware.cpu == "intel");
 
-      criticalPowerAction = "Hibernate";
+      upower = {
+        enable = config.reverb.hardware.battery;
+
+        percentageLow = 20;
+        percentageCritical = 5;
+        percentageAction = 3;
+
+        criticalPowerAction = "Hibernate";
+      };
     };
   };
 }

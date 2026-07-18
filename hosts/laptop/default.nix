@@ -26,6 +26,10 @@
     profiles = {
       graphical.enable = true;
     };
+
+    features = {
+      virtualisation.enable = false;
+    };
   };
 
   boot.kernelParams = [
@@ -37,6 +41,7 @@
   services = {
     fstrim.enable = true;
     fprintd.enable = true;
+    # throttled.enable = true; # seems to be broken
   };
 
   hardware = {
