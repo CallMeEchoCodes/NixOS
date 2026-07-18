@@ -9,6 +9,7 @@
     powerManagement.enable = config.reverb.hardware.battery;
 
     services = {
+      acpid.enable = config.reverb.hardware.battery;
       tlp.enable = config.reverb.hardware.battery;
       thermald.enable = config.reverb.hardware.battery && (config.reverb.hardware.cpu == "intel");
 

@@ -9,8 +9,10 @@
         enable = true;
         configurationLimit = 10;
 
+        bootCounting.enable = true;
         memtest86.enable = true;
 
+        # sophie-proofing
         editor = false;
       };
 
@@ -21,6 +23,10 @@
 
     initrd = {
       verbose = false;
+    };
+
+    tmp = {
+      cleanOnBoot = true;
     };
   };
 }
