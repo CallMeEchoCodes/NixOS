@@ -66,6 +66,11 @@
                 useHyperLinks = true;
                 disableEmbedPermissionCheck = false;
               };
+
+              ShikiCodeblocks = {
+                enabled = true;
+                theme = "https://cdn.jsdelivr.net/gh/shikijs/textmate-grammars-themes/packages/tm-themes/themes/catppuccin-mocha.json";
+              };
             }
             (lib.genAttrs
               [
@@ -99,7 +104,6 @@
                 "PictureInPicture"
                 "ReviewDB"
                 "RoleColorEverywhere"
-                "ShikiCodeblocks"
                 "ThemeAttributes"
                 "TypingIndicator"
                 "TypingTweaks"
