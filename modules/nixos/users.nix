@@ -28,6 +28,7 @@ in
         "network"
         "networkmanager"
         "libvirtd"
+        "docker"
       ];
 
       home = "/home/echo";

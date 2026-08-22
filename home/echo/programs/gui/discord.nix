@@ -1,30 +1,11 @@
 {
   lib,
-  pkgs,
   osConfig,
   ...
 }:
 {
   programs.vesktop = {
     enable = osConfig.reverb.profiles.graphical.enable;
-    package = pkgs.vesktop.overrideAttrs (old: {
-      preBuild = ''
-        cp -r ${pkgs.electron.dist} electron-dist
-        chmod -R u+w electron-dist
-      '';
-      buildPhase = ''
-        runHook preBuild
-
-        pnpm build
-        pnpm exec electron-builder \
-          --dir \
-          -c.asarUnpack="**/*.node" \
-          -c.electronDist="electron-dist" \
-          -c.electronVersion=${pkgs.electron.version}
-
-        runHook postBuild
-      '';
-    });
 
     settings = {
       discordBranch = "canary";
@@ -71,6 +52,16 @@
                 enabled = true;
                 theme = "https://cdn.jsdelivr.net/gh/shikijs/textmate-grammars-themes/packages/tm-themes/themes/catppuccin-mocha.json";
               };
+
+              FakeProfileThemes = {
+                enabled = true;
+                nitroFirst = true;
+              };
+
+              NoTrack = {
+                enabled = true;
+                disableAnalytics = true;
+              };
             }
             (lib.genAttrs
               [
@@ -85,7 +76,6 @@
                 "Decor"
                 "DontRoundMyTimestamps"
                 "ExpressionCloner"
-                "FakeProfileThemes"
                 "FavoriteEmojiFirst"
                 "FixCodeblockGap"
                 "FixYoutubeEmbeds"

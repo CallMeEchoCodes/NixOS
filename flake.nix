@@ -18,56 +18,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    catppuccin = {
+      url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
-
-    catppuccin.url = "github:catppuccin/nix";
+    nixvim.url = "github:nix-community/nixvim";
     vicinae.url = "github:vicinaehq/vicinae";
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
-  outputs =
-    inputs@{ nixpkgs, ... }:
-    let
-      util = import ./util.nix (inputs // { lib = nixpkgs.lib; });
-      mkNixOSConfiguration =
-        name:
-        (nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit util;
-            inherit inputs;
-          };
-
-          modules = [
-            ./hosts/${name}
-            ./modules/nixos
-            ./modules/packages
-          ];
-        });
-    in
-    {
-      nixosConfigurations = {
-        laptop = (mkNixOSConfiguration "laptop");
-        desktop = (mkNixOSConfiguration "desktop");
-      };
-
-      devShells = util.eachSystem (
-        system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-          default = pkgs.mkShellNoCC {
-            buildInputs = with pkgs; [
-              nixd
-              nixfmt
-            ];
-          };
-        }
-      );
-    };
+  outputs = inputs: import ./flake inputs;
 }
