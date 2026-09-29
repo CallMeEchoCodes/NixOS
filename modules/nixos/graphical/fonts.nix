@@ -11,6 +11,7 @@
         enable = true;
         hinting.enable = true;
         antialias = true;
+        subpixel.rgba = "rgb";
 
         defaultFonts = {
           serif = [

@@ -28,6 +28,8 @@
         ++ (with pkgs.open-vsx; [
           theqtcompany.qt-qml
           theqtcompany.qt-core
+	  
+	  slint.slint
 
           slevesque.shader
         ]);
