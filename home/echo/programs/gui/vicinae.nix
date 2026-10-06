@@ -1,9 +1,5 @@
-{ inputs, osConfig, ... }:
+{ osConfig, ... }:
 {
-  imports = [
-    inputs.vicinae.homeManagerModules.default
-  ];
-
   programs.vicinae = {
     enable = osConfig.reverb.profiles.graphical.enable;
 

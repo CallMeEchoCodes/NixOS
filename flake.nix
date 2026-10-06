@@ -30,7 +30,6 @@
 
     nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
     nixvim.url = "github:nix-community/nixvim";
-    vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs = inputs: import ./flake inputs;
