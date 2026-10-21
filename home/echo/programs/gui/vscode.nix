@@ -24,12 +24,13 @@
           ms-vscode.hexeditor
           esbenp.prettier-vscode
           rust-lang.rust-analyzer
+          tamasfe.even-better-toml
         ])
         ++ (with pkgs.open-vsx; [
           theqtcompany.qt-qml
           theqtcompany.qt-core
-	  
-	  slint.slint
+
+          slint.slint
 
           slevesque.shader
         ]);

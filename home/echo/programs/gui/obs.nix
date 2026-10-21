@@ -3,10 +3,11 @@
   programs.obs-studio = {
     enable = osConfig.reverb.profiles.graphical.enable;
 
+    # disabled for now build is too slow
     # required for hw accel, hydra doesnt build this config for some reason so may be a good idea to disable this on my laptop in future?
-    package = pkgs.obs-studio.override {
-      cudaSupport = true;
-    };
+    # package = pkgs.obs-studio.override {
+    #   cudaSupport = true;
+    # };
 
     plugins = with pkgs.obs-studio-plugins; [
       wlrobs

@@ -30,7 +30,7 @@
       })
 
       mpv
-      audacity
+      # audacity # build failure
       pwvucontrol
 
       renderdoc
@@ -46,7 +46,7 @@
       pnpm
       nodejs
 
-      rgp # radeon graphics profiler
+      # rgp # radeon graphics profiler, disabled, build failure
 
       (python3.withPackages (
         python-pkgs: with python-pkgs; [

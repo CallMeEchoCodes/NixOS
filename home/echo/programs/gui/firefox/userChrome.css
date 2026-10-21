@@ -28,8 +28,26 @@
 }
 
 :root {
+    /* TST: Hide the "Tree Style Tab" header at the top of the sidebar; For only Tree Style Tab sidebar #1397 */
+    #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+        display: none;
+    }
+
+    /* TST: Hide the "Tree Style Tab" header at the top of the sidebar; For revamped sidebar #3762; For only webextension sidebars */
+    #webextpanels-window #sidebar-panel-header {
+        display: none;
+    }
+
+    #sidebar-header {
+        display: none;
+    }
+
     #TabsToolbar {
         display: none !important;
+    }
+
+    #sidebar-panel-header {
+        display: none;
     }
 
     #sidebar-splitter {
@@ -41,7 +59,7 @@
         display: none;
     }
 
-    #sidebar-box #sidebar {
+    /* #sidebar-box #sidebar {
         box-shadow: none !important;
     }
 
@@ -59,5 +77,5 @@
         padding: 2px !important;
     }
 
-    --toolbarbutton-border-radius: 6px !important;
+    --toolbarbutton-border-radius: 6px !important; */
 }
