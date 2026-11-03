@@ -21,10 +21,6 @@
 
     kernelPackages = pkgs.linuxPackages_latest;
 
-    initrd = {
-      verbose = false;
-    };
-
     tmp = {
       cleanOnBoot = true;
     };
