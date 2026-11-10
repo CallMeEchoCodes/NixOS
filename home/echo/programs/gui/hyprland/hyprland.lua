@@ -53,7 +53,7 @@ hl.config({
     float_switch_override_focus = true,
     follow_mouse = true,
     kb_layout = "us",
-    sensitivity = touchpad and 0.5 or 2.0,
+    sensitivity = 0.5,
     touchpad = {
       disable_while_typing = false,
       natural_scroll = false
