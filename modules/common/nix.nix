@@ -4,15 +4,27 @@
     # fork of cppnix, many cool new features (also faster)
     package = pkgs.lixPackageSets.stable.lix;
 
-    gc.automatic = true;
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 3d";
+    };
+
     channel.enable = false;
 
     settings = {
-      connect-timeout = 50000;
-
-      warn-dirty = false;
+      min-free = 5 * 1024 * 1024 * 1024;
+      max-free = 20 * 1024 * 1024 * 1024;
 
       auto-optimise-store = true;
+
+      connect-timeout = 50000;
+      http3 = true;
+
+      allowed-users = [ "@wheel" ];
+      trusted-users = [ "@wheel" ];
+
+      warn-dirty = false;
+      keep-going = true;
 
       auto-allocate-uids = true;
       use-cgroups = true;

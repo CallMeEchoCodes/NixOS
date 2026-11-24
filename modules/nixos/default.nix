@@ -17,6 +17,7 @@
     ./shell.nix
     ./server.nix
     ./security.nix
+    ./location.nix
     inputs.nur.modules.nixos.default
   ];
 }

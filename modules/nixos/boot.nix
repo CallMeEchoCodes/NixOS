@@ -4,10 +4,13 @@
 }:
 {
   boot = {
+    consoleLogLevel = 3;
+
     loader = {
       systemd-boot = {
         enable = true;
         configurationLimit = 10;
+        consoleMode = "max";
 
         bootCounting.enable = true;
         memtest86.enable = true;

@@ -11,6 +11,7 @@
         enable = true;
         hinting.enable = true;
         antialias = true;
+        # TODO: all my current devices have this pixel order but i might need to make this configurable in the future
         subpixel.rgba = "rgb";
 
         defaultFonts = {
@@ -28,6 +29,9 @@
           ];
         };
       };
+
+      # saves a little storage space, could add up with a lot of generations
+      fontDir.decompressFonts = true;
 
       packages = with pkgs; [
         noto-fonts

@@ -23,11 +23,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    catppuccin.url = "github:catppuccin/nix";
     nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
     nixvim.url = "github:nix-community/nixvim";
   };

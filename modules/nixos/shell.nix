@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   users.defaultUserShell = pkgs.fish;
-  programs.fish.enable = true;
 
   # fish enables this by default and it makes switch unbearably slow
   documentation.man.cache.enable = false;
@@ -32,6 +31,8 @@
   ];
 
   programs = {
+    fish.enable = true;
+
     git.enable = true;
 
     gnupg.agent = {

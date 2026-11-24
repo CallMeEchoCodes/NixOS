@@ -8,6 +8,7 @@
   home.shellAliases = {
     mkdir = "mkdir -pv";
     df = "df -h";
+    rm = "trash";
 
     ls = "eza";
     cat = "bat";
